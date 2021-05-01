@@ -1,18 +1,26 @@
 {
-  "name": "aeliot/encrypt-db",
-  "type": "library",
+  "name": "aeliot/encrypt-db-bundle",
+  "type": "symfony-bundle",
   "description": "Encrypt database",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Aeliot\\EncryptDB\\": "src/"
+      "Aeliot\\Bundle\\EncryptDB\\": "src/"
     }
   },
   "config": {
     "sort-packages": true
   },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false
+    }
+  },
   "minimum-stability": "dev",
   "require": {
-    "php": "^7.0"
+    "php": "^7.0",
+    "symfony/config": "^3.4",
+    "symfony/dependency-injection": "^3.4",
+    "symfony/http-kernel": "^3.4"
   }
 }
