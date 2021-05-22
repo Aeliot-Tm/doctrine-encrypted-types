@@ -27,7 +27,7 @@ class EncryptedStringType extends StringType
      */
     public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
     {
-        return $this->getEncryptSQLExpression($sqlExpr);
+        return $this->getEncryptSQLExpression($sqlExpr, $platform);
     }
 
     /**
@@ -38,6 +38,6 @@ class EncryptedStringType extends StringType
      */
     public function convertToPHPValueSQL($sqlExpr, $platform)
     {
-        return $this->getDecryptSQLExpression($sqlExpr);
+        return $this->getDecryptSQLExpression($sqlExpr, $platform);
     }
 }
