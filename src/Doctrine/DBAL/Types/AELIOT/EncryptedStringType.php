@@ -21,8 +21,7 @@ class EncryptedStringType extends StringType
     }
 
     /**
-     * @param string           $sqlExpr
-     * @param AbstractPlatform $platform
+     * @param string $sqlExpr
      *
      * @return string
      */
@@ -32,7 +31,7 @@ class EncryptedStringType extends StringType
     }
 
     /**
-     * @param string           $sqlExpr
+     * @param string $sqlExpr
      * @param AbstractPlatform $platform
      *
      * @return string
