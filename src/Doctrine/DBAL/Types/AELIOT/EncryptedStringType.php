@@ -8,6 +8,8 @@ use Doctrine\DBAL\Types\StringType;
 
 class EncryptedStringType extends StringType
 {
+    use EncryptionUtilsTrait;
+
     public function getName(): string
     {
         return EncryptedTypeEnum::AELIOT_ENCRYPTED_STRING;
@@ -26,7 +28,7 @@ class EncryptedStringType extends StringType
      */
     public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
     {
-        return sprintf('AELIOT_ENCRYPT(%s)', $sqlExpr ?: 'NULL');
+        return $this->getEncryptSQLExpression($sqlExpr);
     }
 
     /**
@@ -37,6 +39,6 @@ class EncryptedStringType extends StringType
      */
     public function convertToPHPValueSQL($sqlExpr, $platform)
     {
-        return sprintf('AELIOT_DECRYPT(%s)', $sqlExpr ?: 'NULL');
+        return $this->getDecryptSQLExpression($sqlExpr);
     }
 }
