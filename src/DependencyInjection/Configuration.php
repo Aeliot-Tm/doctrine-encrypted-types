@@ -28,6 +28,12 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
 
+        $rootNode
+            ->children()
+                ->scalarNode('encryption_key_provider')
+                    ->isRequired()
+                ->end();
+
         return $treeBuilder;
     }
 }
