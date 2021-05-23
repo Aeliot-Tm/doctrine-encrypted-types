@@ -2,6 +2,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $encryptedConnections: '%aeliot.aeliot_encrypt_db.encrypted_connections%'
 
     Aeliot\Bundle\EncryptDB\:
         resource: '../../*'
