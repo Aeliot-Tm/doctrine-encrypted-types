@@ -5,5 +5,10 @@ services:
         bind:
             $encryptedConnections: '%aeliot.aeliot_encrypt_db.encrypted_connections%'
 
+    _instanceof:
+        Doctrine\Common\EventSubscriber:
+            tags: [doctrine.event_subscriber]
+
     Aeliot\Bundle\EncryptDB\:
         resource: '../../*'
+        exclude: '../../{Doctrine,Enum,Exception,Resources}'
