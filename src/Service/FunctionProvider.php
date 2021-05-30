@@ -4,7 +4,6 @@ namespace Aeliot\Bundle\EncryptDB\Service;
 
 use Aeliot\Bundle\EncryptDB\Enum\DatabaseErrorEnum;
 use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
-use Aeliot\Bundle\EncryptDB\Service\FunctionProviderInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class FunctionProvider implements FunctionProviderInterface
