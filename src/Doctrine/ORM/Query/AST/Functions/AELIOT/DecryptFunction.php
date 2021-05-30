@@ -2,6 +2,7 @@
 
 namespace Aeliot\Bundle\EncryptDB\Doctrine\ORM\Query\AST\Functions\AELIOT;
 
+use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
 use Doctrine\ORM\Query\Lexer;
@@ -24,7 +25,8 @@ class DecryptFunction extends FunctionNode
     public function getSql(SqlWalker $sqlWalker)
     {
         return sprintf(
-            'AELIOT_DECRYPT(%s)',
+            '%s(%s)',
+            FunctionEnum::FUNCTION_DECRYPT,
             $sqlWalker->walkSimpleArithmeticExpression($this->simpleArithmeticExpression)
         );
     }

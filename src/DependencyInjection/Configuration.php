@@ -3,6 +3,7 @@
 namespace Aeliot\Bundle\EncryptDB\DependencyInjection;
 
 use Aeliot\Bundle\EncryptDB\Service\DefaultEncryptionAvailabilityChecker;
+use Aeliot\Bundle\EncryptDB\Service\FunctionProvider;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -31,13 +32,14 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue(DefaultEncryptionAvailabilityChecker::class)
                 ->end()
-            ->end();
-
-        $rootNode
-            ->children()
                 ->scalarNode('encryption_key_provider')
                     ->isRequired()
-                ->end();
+                ->end()
+                ->scalarNode('functions_provider')
+                    ->cannotBeEmpty()
+                    ->defaultValue(FunctionProvider::class)
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

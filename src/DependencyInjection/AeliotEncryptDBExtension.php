@@ -4,6 +4,7 @@ namespace Aeliot\Bundle\EncryptDB\DependencyInjection;
 
 use Aeliot\Bundle\EncryptDB\Service\EncryptionAvailabilityCheckerInterface;
 use Aeliot\Bundle\EncryptDB\Service\EncryptionKeyProviderInterface;
+use Aeliot\Bundle\EncryptDB\Service\FunctionProviderInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,6 +23,7 @@ class AeliotEncryptDBExtension extends Extension
             new Alias($config['encryption_availability_checker'])
         );
         $container->setAlias(EncryptionKeyProviderInterface::class, new Alias($config['encryption_key_provider']));
+        $container->setAlias(FunctionProviderInterface::class, new Alias($config['functions_provider']));
 
         $container->setParameter('aeliot.aeliot_encrypt_db.encrypted_connections', $config['encrypted_connections']);
 
