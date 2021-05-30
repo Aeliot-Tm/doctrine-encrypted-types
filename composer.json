@@ -19,6 +19,7 @@
   "minimum-stability": "dev",
   "require": {
     "php": "^7.0",
+    "ext-json": "*",
     "ext-pdo": "*",
     "doctrine/orm": "^2.5",
     "doctrine/persistence": "^1.3",
