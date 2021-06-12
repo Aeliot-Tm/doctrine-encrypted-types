@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
