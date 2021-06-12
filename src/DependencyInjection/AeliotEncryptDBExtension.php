@@ -2,7 +2,10 @@
 
 namespace Aeliot\Bundle\EncryptDB\DependencyInjection;
 
+use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateImmutableType;
+use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeImmutableType;
 use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeType;
+use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateType;
 use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedStringType;
 use Aeliot\Bundle\EncryptDB\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
 use Aeliot\Bundle\EncryptDB\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
@@ -50,7 +53,10 @@ class AeliotEncryptDBExtension extends Extension implements PrependExtensionInte
             [
                 'dbal' => [
                     'types' => [
+                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE => EncryptedDateType::class,
+                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
                         EncryptedTypeEnum::AELIOT_ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
+                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
                         EncryptedTypeEnum::AELIOT_ENCRYPTED_STRING => EncryptedStringType::class,
                     ],
                 ],
