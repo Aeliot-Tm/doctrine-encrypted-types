@@ -6,9 +6,14 @@ use Aeliot\Bundle\EncryptDB\Enum\EncryptedTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeType;
 
-class EncryptedDateTimeType extends DateTimeType
+class EncryptedDateTimeType extends DateTimeType implements EncryptedFieldLengthInterface
 {
     use EncryptionTrait;
+
+    public function getDefaultFieldLength(AbstractPlatform $platform): ?int
+    {
+        return 255;
+    }
 
     public function getName(): string
     {
