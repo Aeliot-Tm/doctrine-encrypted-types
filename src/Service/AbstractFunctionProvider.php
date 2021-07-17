@@ -6,7 +6,7 @@ use Aeliot\Bundle\EncryptDB\Enum\DatabaseErrorEnum;
 use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
-class FunctionProvider implements FunctionProviderInterface
+abstract class AbstractFunctionProvider implements FunctionProviderInterface
 {
     public function getList(): array
     {
