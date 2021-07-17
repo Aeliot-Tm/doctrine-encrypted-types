@@ -12,3 +12,8 @@ services:
     Aeliot\Bundle\EncryptDB\:
         resource: '../../*'
         exclude: '../../{Doctrine,Enum,Exception,Resources}'
+
+
+    Aeliot\Bundle\EncryptDB\EventListener\LoadClassMetadataListener:
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
