@@ -1,12 +1,12 @@
 <?php
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\DateType;
+use Doctrine\DBAL\Types\DateImmutableType;
 
-class EncryptedDateType extends DateType implements EncryptedFieldLengthInterface
+class EncryptedDateImmutableType extends DateImmutableType implements EncryptedFieldLengthInterface
 {
     use EncryptionTrait;
 
@@ -17,7 +17,7 @@ class EncryptedDateType extends DateType implements EncryptedFieldLengthInterfac
 
     public function getName(): string
     {
-        return EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE;
+        return EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE;
     }
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string

@@ -2,11 +2,11 @@
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateImmutableType;
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeImmutableType;
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeType;
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateType;
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedStringType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateImmutableType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateTimeImmutableType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateTimeType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedStringType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;

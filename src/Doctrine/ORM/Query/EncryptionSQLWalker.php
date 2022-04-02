@@ -2,7 +2,7 @@
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptionUtilsTrait;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptionUtilsTrait;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\AST\PathExpression;

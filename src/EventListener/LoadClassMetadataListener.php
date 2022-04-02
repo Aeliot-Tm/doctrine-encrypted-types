@@ -2,9 +2,9 @@
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedFieldLengthInterface;
-use Aeliot\Bundle\DoctrineEncryptedField\Exception\ConfigurationException;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedFieldLengthInterface;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Exception\ConfigurationException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
