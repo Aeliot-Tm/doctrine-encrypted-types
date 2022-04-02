@@ -1,22 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
 
 class FunctionManager
 {
-    /**
-     * @var FunctionProviderInterface
-     */
-    private $functionProvider;
+    private FunctionProviderInterface $functionProvider;
 
     public function __construct(FunctionProviderInterface $functionProvider)
     {
         $this->functionProvider = $functionProvider;
     }
 
-    public function addFunction(Connection $connection, string $functionName)
+    public function addFunction(Connection $connection, string $functionName): void
     {
         $connection->prepare($this->getFunctionDefinition($connection, $functionName))->execute();
     }
@@ -44,7 +43,7 @@ class FunctionManager
         return false;
     }
 
-    public function removeFunction(Connection $connection, string $functionName)
+    public function removeFunction(Connection $connection, string $functionName): void
     {
         $connection->prepare(sprintf('DROP FUNCTION %s;', $functionName))->execute();
     }

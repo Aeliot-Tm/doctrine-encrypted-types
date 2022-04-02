@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\DatabaseErrorEnum;
@@ -25,6 +27,9 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
         return $definitions[$functionName][$platformName];
     }
 
+    /**
+     * @return array<string,array<string,string>>
+     */
     protected function getDefinitions(): array
     {
         return [

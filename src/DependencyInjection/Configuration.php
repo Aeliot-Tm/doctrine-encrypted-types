@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultEncryptionAvailabilityChecker;
@@ -10,7 +12,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('aeliot_doctrine_encrypted_field');

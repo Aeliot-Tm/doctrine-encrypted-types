@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptionUtilsTrait;
@@ -26,7 +28,7 @@ class EncryptionSQLWalker extends SqlWalker
         return $sql;
     }
 
-    private function getDecryptedPathExpression(string $dqlAlias, string $fieldName, string &$sql)
+    private function getDecryptedPathExpression(string $dqlAlias, string $fieldName, string &$sql): void
     {
         if ($fieldName && array_key_exists($dqlAlias, $this->getQueryComponents())) {
             /** @var ClassMetadata $metadata */

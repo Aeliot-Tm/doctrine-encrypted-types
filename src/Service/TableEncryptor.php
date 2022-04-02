@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
@@ -17,7 +19,7 @@ class TableEncryptor
         array $columns,
         string $function,
         OutputInterface $output = null
-    ) {
+    ): void {
         $sql = $this->createSQL($tableName, $columns, $function);
         $this->executeOrShow($connection, $sql, $output);
     }

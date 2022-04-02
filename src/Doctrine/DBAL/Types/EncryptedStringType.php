@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;

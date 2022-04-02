@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateImmutableType;
@@ -23,7 +25,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class AeliotDoctrineEncryptedFieldExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -41,12 +43,12 @@ class AeliotDoctrineEncryptedFieldExtension extends Extension implements Prepend
         $loader->load('services.yml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $this->prependDoctrineConfig($container);
     }
 
-    private function prependDoctrineConfig(ContainerBuilder $container)
+    private function prependDoctrineConfig(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig(
             'doctrine',

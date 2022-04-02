@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
@@ -14,15 +16,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class FieldsTransformCommand extends Command
 {
-    /**
-     * @var ConnectionRegistry
-     */
-    private $registry;
-
-    /**
-     * @var TableEncryptor
-     */
-    private $tableEncryptor;
+    private ConnectionRegistry $registry;
+    private TableEncryptor $tableEncryptor;
 
     public function __construct(ConnectionRegistry $registry, TableEncryptor $tableEncryptor)
     {
@@ -31,7 +26,7 @@ abstract class FieldsTransformCommand extends Command
         $this->tableEncryptor = $tableEncryptor;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->addArgument('connection', InputArgument::OPTIONAL, 'Connection name');
         $this->addOption(
@@ -43,10 +38,7 @@ abstract class FieldsTransformCommand extends Command
         $this->addOption('dump-sql', null, InputOption::VALUE_NONE, 'Dump sql instead of its execution');
     }
 
-    /**
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var Connection $connection */
         $connection = $this->registry->getConnection($input->getArgument('connection'));
@@ -58,6 +50,8 @@ abstract class FieldsTransformCommand extends Command
             $fields = explode(',', $fieldsList);
             $this->tableEncryptor->convert($connection, $table, $fields, $function, $passedOutput);
         }
+
+        return 0;
     }
 
     protected function getFunction(): string

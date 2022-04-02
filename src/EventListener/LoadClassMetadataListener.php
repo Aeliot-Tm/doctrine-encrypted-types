@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedFieldLengthInterface;
@@ -11,7 +13,7 @@ use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
 class LoadClassMetadataListener
 {
-    public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
+    public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $classMetadata = $eventArgs->getClassMetadata();
         $encryptedTypes = EncryptedTypeEnum::getAll();

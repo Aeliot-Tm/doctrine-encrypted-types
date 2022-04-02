@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
@@ -11,10 +13,7 @@ class DefaultEncryptionKeyProvider implements EncryptionKeyProviderInterface
         return (string) getenv('DB_ENCRYPTION_KEY');
     }
 
-    /**
-     * @return void
-     */
-    public function prepareConnection(Connection $connection)
+    public function prepareConnection(Connection $connection): void
     {
     }
 

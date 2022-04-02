@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
@@ -13,9 +15,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DatabaseEncryptionService
 {
-    private $databaseEncryptionChecker;
-    private $registry;
-    private $tableEncryptor;
+    private EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker;
+    private ManagerRegistry $registry;
+    private TableEncryptor $tableEncryptor;
 
     public function __construct(
         EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker,
@@ -27,17 +29,17 @@ class DatabaseEncryptionService
         $this->databaseEncryptionChecker = $databaseEncryptionChecker;
     }
 
-    public function decrypt(string $managerName, OutputInterface $output = null)
+    public function decrypt(string $managerName, OutputInterface $output = null): void
     {
         $this->convertDatabases($managerName, FunctionEnum::FUNCTION_DECRYPT, $output);
     }
 
-    public function encrypt(string $managerName, OutputInterface $output = null)
+    public function encrypt(string $managerName, OutputInterface $output = null): void
     {
         $this->convertDatabases($managerName, FunctionEnum::FUNCTION_ENCRYPT, $output);
     }
 
-    private function convertDatabases(string $managerName, string $function, OutputInterface $output = null)
+    private function convertDatabases(string $managerName, string $function, OutputInterface $output = null): void
     {
         /** @var EntityManager $manager */
         $manager = $this->registry->getManager($managerName);

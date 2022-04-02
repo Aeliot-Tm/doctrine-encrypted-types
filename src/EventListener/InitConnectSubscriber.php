@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
 use Doctrine\Common\EventSubscriber;
@@ -10,15 +12,12 @@ use Doctrine\Persistence\ConnectionRegistry;
 
 class InitConnectSubscriber implements EventSubscriber
 {
-    /**
-     * @var ConnectionRegistry
-     */
-    private $connectionRegistry;
+    private ConnectionRegistry $connectionRegistry;
 
     /**
      * @var string[]
      */
-    private $encryptedConnections;
+    private array $encryptedConnections;
 
     /**
      * @param string[] $encryptedConnections
@@ -36,7 +35,7 @@ class InitConnectSubscriber implements EventSubscriber
         ];
     }
 
-    public function postConnect(ConnectionEventArgs $event)
+    public function postConnect(ConnectionEventArgs $event): void
     {
         $connection = $event->getConnection();
         $connectionName = $this->getConnectionName($connection);

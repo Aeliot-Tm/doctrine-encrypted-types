@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection\Compiler;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\EncryptionSQLWalker;
@@ -9,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class EnableEncryptionSQLWalkerCompilerPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $connections = $container->getParameter('aeliot.doctrine_encrypted_field.encrypted_connections');
         foreach ($connections as $connection) {

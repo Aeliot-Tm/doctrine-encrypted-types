@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Service\DatabaseEncryptionService;
@@ -13,10 +15,7 @@ class DatabaseDecryptCommand extends Command
 {
     protected static $defaultName = 'doctrine-encrypted-field:database:decrypt';
 
-    /**
-     * @var DatabaseEncryptionService
-     */
-    private $encryptionService;
+    private DatabaseEncryptionService $encryptionService;
 
     public function __construct(DatabaseEncryptionService $encryptionService)
     {
@@ -24,19 +23,18 @@ class DatabaseDecryptCommand extends Command
         $this->encryptionService = $encryptionService;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Decrypt database');
         $this->addArgument('manager', InputArgument::REQUIRED, 'Entity manager name');
         $this->addOption('dump-sql', null, InputOption::VALUE_NONE, 'Dump sql instead of its execution');
     }
 
-    /**
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $passedOutput = $input->getOption('dump-sql') ? $output : null;
         $this->encryptionService->decrypt($input->getArgument('manager'), $passedOutput);
+
+        return 0;
     }
 }

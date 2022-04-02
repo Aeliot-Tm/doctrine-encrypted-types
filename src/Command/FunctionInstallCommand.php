@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Service\FunctionManager;
@@ -17,17 +19,9 @@ class FunctionInstallCommand extends Command
     /**
      * @var string[]
      */
-    private $encryptedConnections;
-
-    /**
-     * @var FunctionManager
-     */
-    private $functionManager;
-
-    /**
-     * @var ConnectionRegistry
-     */
-    private $registry;
+    private array $encryptedConnections;
+    private FunctionManager $functionManager;
+    private ConnectionRegistry $registry;
 
     public function __construct(
         array $encryptedConnections,
@@ -40,16 +34,13 @@ class FunctionInstallCommand extends Command
         $this->registry = $registry;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Install required functions');
         $this->addArgument('connection', InputArgument::IS_ARRAY | InputArgument::OPTIONAL, 'Connection name');
     }
 
-    /**
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $connectionNames = $this->getConnectionNames($input);
         foreach ($connectionNames as $connectionName) {
@@ -61,6 +52,8 @@ class FunctionInstallCommand extends Command
                 }
             }
         }
+
+        return 0;
     }
 
     /**

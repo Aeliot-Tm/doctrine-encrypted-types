@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
@@ -14,15 +16,9 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class EncryptFunction extends FunctionNode
 {
-    /**
-     * @var SimpleArithmeticExpression
-     */
-    public $simpleArithmeticExpression;
+    public ?SimpleArithmeticExpression $simpleArithmeticExpression = null;
 
-    /**
-     * @return string
-     */
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(
             '%s(%s)',
@@ -31,10 +27,7 @@ class EncryptFunction extends FunctionNode
         );
     }
 
-    /**
-     * @return void
-     */
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
