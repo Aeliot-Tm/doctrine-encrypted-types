@@ -6,7 +6,7 @@ use Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection\Compiler\EnableEncr
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AeliotEncryptDBBundle extends Bundle
+class AeliotDoctrineEncryptedFieldBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
