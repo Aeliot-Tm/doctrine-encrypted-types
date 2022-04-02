@@ -10,9 +10,8 @@ services:
             tags: [doctrine.event_subscriber]
 
     Aeliot\Bundle\DoctrineEncryptedField\:
-        resource: '../../*'
-        exclude: '../../{Doctrine,Enum,Exception,Resources}'
-
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Doctrine,Enum,Exception,AeliotDoctrineEncryptedFieldBundle.php}'
 
     Aeliot\Bundle\DoctrineEncryptedField\EventListener\LoadClassMetadataListener:
         tags:
