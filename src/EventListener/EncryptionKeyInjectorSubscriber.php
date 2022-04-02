@@ -5,7 +5,7 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 use Aeliot\Bundle\DoctrineEncryptedField\Exception\SecurityConfigurationException;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
 use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Persistence\ConnectionRegistry;
+use Doctrine\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Event\ConnectionEventArgs;
 use Doctrine\DBAL\Events;
