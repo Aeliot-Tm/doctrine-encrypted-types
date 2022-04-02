@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT;
 
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait EncryptionUtilsTrait

@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT;
 
-use Aeliot\Bundle\EncryptDB\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateType;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Command;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
-use Aeliot\Bundle\EncryptDB\Service\TableEncryptor;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\TableEncryptor;
 use Doctrine\Common\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Console\Command\Command;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Logging;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Logging;
 
 use Doctrine\DBAL\Logging\SQLLogger;
 

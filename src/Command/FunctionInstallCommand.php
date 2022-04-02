@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Command;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\EncryptDB\Service\FunctionManager;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\FunctionManager;
 use Doctrine\Common\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Console\Command\Command;

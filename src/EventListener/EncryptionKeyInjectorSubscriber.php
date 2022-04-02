@@ -1,9 +1,9 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\EventListener;
+namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
-use Aeliot\Bundle\EncryptDB\Exception\SecurityConfigurationException;
-use Aeliot\Bundle\EncryptDB\Service\EncryptionKeyProviderInterface;
+use Aeliot\Bundle\DoctrineEncryptedField\Exception\SecurityConfigurationException;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;

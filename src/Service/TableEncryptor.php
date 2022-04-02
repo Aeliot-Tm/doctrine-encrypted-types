@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Service;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Console\Output\NullOutput;

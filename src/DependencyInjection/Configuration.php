@@ -1,10 +1,10 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\DependencyInjection;
+namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
-use Aeliot\Bundle\EncryptDB\Service\DefaultEncryptionAvailabilityChecker;
-use Aeliot\Bundle\EncryptDB\Service\DefaultEncryptionKeyProvider;
-use Aeliot\Bundle\EncryptDB\Service\DefaultFunctionProvider;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultEncryptionAvailabilityChecker;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultEncryptionKeyProvider;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultFunctionProvider;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -13,7 +13,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('aeliot_encrypt_db');
+        $rootNode = $treeBuilder->root('aeliot_doctrine_encrypted_field');
 
         $rootNode
             ->children()

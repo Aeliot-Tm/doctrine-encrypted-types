@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Exception;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Exception;
 
 class ConfigurationException extends \DomainException
 {

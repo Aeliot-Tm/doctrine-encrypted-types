@@ -1,9 +1,9 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Service;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
-use Aeliot\Bundle\EncryptDB\Enum\DatabaseErrorEnum;
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\DatabaseErrorEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class AbstractFunctionProvider implements FunctionProviderInterface

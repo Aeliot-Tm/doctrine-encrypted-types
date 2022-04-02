@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Command;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 
 class FieldsDecryptCommand extends FieldsTransformCommand
 {

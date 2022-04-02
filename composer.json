@@ -1,11 +1,11 @@
 {
-  "name": "aeliot/encrypt-db-bundle",
+  "name": "aeliot/doctrine-encrypted-field",
   "type": "symfony-bundle",
-  "description": "Encrypt database",
+  "description": "Projects provides equipments to work with encrypted columns in database via fields of Doctrine entities",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Aeliot\\Bundle\\EncryptDB\\": "src/"
+      "Aeliot\\Bundle\\DoctrineEncryptedField\\": "src/"
     }
   },
   "config": {

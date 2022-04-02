@@ -1,19 +1,19 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\DependencyInjection;
+namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
-use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateImmutableType;
-use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeImmutableType;
-use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeType;
-use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedDateType;
-use Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT\EncryptedStringType;
-use Aeliot\Bundle\EncryptDB\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
-use Aeliot\Bundle\EncryptDB\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
-use Aeliot\Bundle\EncryptDB\Enum\EncryptedTypeEnum;
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
-use Aeliot\Bundle\EncryptDB\Service\EncryptionAvailabilityCheckerInterface;
-use Aeliot\Bundle\EncryptDB\Service\EncryptionKeyProviderInterface;
-use Aeliot\Bundle\EncryptDB\Service\FunctionProviderInterface;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateImmutableType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeImmutableType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateTimeType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedDateType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT\EncryptedStringType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionAvailabilityCheckerInterface;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\FunctionProviderInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -35,7 +35,7 @@ class AeliotEncryptDBExtension extends Extension implements PrependExtensionInte
         $container->setAlias(EncryptionKeyProviderInterface::class, new Alias($config['encryption_key_provider']));
         $container->setAlias(FunctionProviderInterface::class, new Alias($config['functions_provider']));
 
-        $container->setParameter('aeliot.aeliot_encrypt_db.encrypted_connections', $config['encrypted_connections']);
+        $container->setParameter('aeliot.doctrine_encrypted_field.encrypted_connections', $config['encrypted_connections']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

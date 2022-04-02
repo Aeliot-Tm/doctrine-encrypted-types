@@ -3,17 +3,17 @@ services:
         autowire: true
         autoconfigure: true
         bind:
-            $encryptedConnections: '%aeliot.aeliot_encrypt_db.encrypted_connections%'
+            $encryptedConnections: '%aeliot.doctrine_encrypted_field.encrypted_connections%'
 
     _instanceof:
         Doctrine\Common\EventSubscriber:
             tags: [doctrine.event_subscriber]
 
-    Aeliot\Bundle\EncryptDB\:
+    Aeliot\Bundle\DoctrineEncryptedField\:
         resource: '../../*'
         exclude: '../../{Doctrine,Enum,Exception,Resources}'
 
 
-    Aeliot\Bundle\EncryptDB\EventListener\LoadClassMetadataListener:
+    Aeliot\Bundle\DoctrineEncryptedField\EventListener\LoadClassMetadataListener:
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Doctrine\DBAL\Types\AELIOT;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\AELIOT;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 

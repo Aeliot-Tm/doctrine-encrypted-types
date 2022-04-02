@@ -1,10 +1,10 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Service;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
-use Aeliot\Bundle\EncryptDB\Enum\EncryptedTypeEnum;
-use Aeliot\Bundle\EncryptDB\Enum\FunctionEnum;
-use Aeliot\Bundle\EncryptDB\Exception\EncryptionAvailabilityException;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Exception\EncryptionAvailabilityException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\Persistence\ManagerRegistry;

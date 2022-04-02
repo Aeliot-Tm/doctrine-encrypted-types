@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\EventListener;
+namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\DBAL\Connection;

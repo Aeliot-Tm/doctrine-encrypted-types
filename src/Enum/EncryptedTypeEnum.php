@@ -1,6 +1,6 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Enum;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Enum;
 
 final class EncryptedTypeEnum
 {

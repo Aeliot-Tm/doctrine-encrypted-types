@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB;
+namespace Aeliot\Bundle\DoctrineEncryptedField;
 
-use Aeliot\Bundle\EncryptDB\DependencyInjection\Compiler\EnableEncryptionSQLWalkerCompilerPass;
+use Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection\Compiler\EnableEncryptionSQLWalkerCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

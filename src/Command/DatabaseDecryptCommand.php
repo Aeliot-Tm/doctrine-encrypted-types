@@ -1,8 +1,8 @@
 <?php
 
-namespace Aeliot\Bundle\EncryptDB\Command;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\EncryptDB\Service\DatabaseEncryptionService;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DatabaseEncryptionService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
