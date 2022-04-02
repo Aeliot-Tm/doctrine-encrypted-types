@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class FunctionUninstallCommand extends Command
 {
-    protected static $defaultName = 'aeliot-encrypt-db:function:uninstall';
+    protected static $defaultName = 'doctrine-encrypted-field:function:uninstall';
 
     /**
      * @var string[]

@@ -6,7 +6,7 @@ use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 
 class FieldsDecryptCommand extends FieldsTransformCommand
 {
-    protected static $defaultName = 'aeliot-encrypt-db:fields:decrypt';
+    protected static $defaultName = 'doctrine-encrypted-field:fields:decrypt';
 
     protected function configure()
     {

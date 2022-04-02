@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DatabaseDecryptCommand extends Command
 {
-    protected static $defaultName = 'aeliot-encrypt-db:database:decrypt';
+    protected static $defaultName = 'doctrine-encrypted-field:database:decrypt';
 
     /**
      * @var DatabaseEncryptionService

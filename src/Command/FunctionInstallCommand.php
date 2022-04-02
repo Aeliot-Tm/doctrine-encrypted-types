@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class FunctionInstallCommand extends Command
 {
-    protected static $defaultName = 'aeliot-encrypt-db:function:install';
+    protected static $defaultName = 'doctrine-encrypted-field:function:install';
 
     /**
      * @var string[]
