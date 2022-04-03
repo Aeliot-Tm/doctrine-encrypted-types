@@ -6,7 +6,7 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Logging;
 
 use Doctrine\DBAL\Logging\SQLLogger;
 
-class MaskingParamsSQLLogger implements SQLLogger
+final class MaskingParamsSQLLogger implements SQLLogger
 {
     private SQLLogger $decorated;
 

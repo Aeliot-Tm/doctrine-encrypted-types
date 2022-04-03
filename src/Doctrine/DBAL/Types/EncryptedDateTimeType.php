@@ -8,7 +8,7 @@ use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeType;
 
-class EncryptedDateTimeType extends DateTimeType implements EncryptedFieldLengthInterface
+final class EncryptedDateTimeType extends DateTimeType implements EncryptedFieldLengthInterface
 {
     use EncryptionTrait;
 

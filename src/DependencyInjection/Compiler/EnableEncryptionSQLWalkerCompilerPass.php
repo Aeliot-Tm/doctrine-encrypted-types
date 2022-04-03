@@ -9,7 +9,7 @@ use Doctrine\ORM\Query;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class EnableEncryptionSQLWalkerCompilerPass implements CompilerPassInterface
+final class EnableEncryptionSQLWalkerCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {

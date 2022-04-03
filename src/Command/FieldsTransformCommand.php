@@ -19,9 +19,9 @@ abstract class FieldsTransformCommand extends Command
     private ConnectionRegistry $registry;
     private TableEncryptor $tableEncryptor;
 
-    public function __construct(ConnectionRegistry $registry, TableEncryptor $tableEncryptor)
+    public function __construct(string $name, ConnectionRegistry $registry, TableEncryptor $tableEncryptor)
     {
-        parent::__construct(null);
+        parent::__construct($name);
         $this->registry = $registry;
         $this->tableEncryptor = $tableEncryptor;
     }
@@ -54,8 +54,5 @@ abstract class FieldsTransformCommand extends Command
         return 0;
     }
 
-    protected function getFunction(): string
-    {
-        return FunctionEnum::FUNCTION_ENCRYPT;
-    }
+    abstract protected function getFunction(): string;
 }

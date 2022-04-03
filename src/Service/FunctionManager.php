@@ -6,7 +6,7 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
 
-class FunctionManager
+final class FunctionManager
 {
     private FunctionProviderInterface $functionProvider;
 

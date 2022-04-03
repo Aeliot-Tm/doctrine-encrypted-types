@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Enum;
 
-final class DatabaseErrorEnum
+final class PlatformEnum
 {
-    public const EMPTY_ENCRYPTION_KEY = 'AEKEY';
+    public const MYSQL = 'mysql';
 
     /**
      * @return string[]
@@ -14,7 +14,7 @@ final class DatabaseErrorEnum
     public static function all(): array
     {
         return [
-            self::EMPTY_ENCRYPTION_KEY,
+            self::MYSQL,
         ];
     }
 

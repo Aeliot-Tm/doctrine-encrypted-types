@@ -11,15 +11,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DatabaseDecryptCommand extends Command
+final class DatabaseDecryptCommand extends Command
 {
-    protected static $defaultName = 'doctrine-encrypted-field:database:decrypt';
-
     private DatabaseEncryptionService $encryptionService;
 
     public function __construct(DatabaseEncryptionService $encryptionService)
     {
-        parent::__construct(null);
+        parent::__construct('doctrine-encrypted-field:database:decrypt');
         $this->encryptionService = $encryptionService;
     }
 

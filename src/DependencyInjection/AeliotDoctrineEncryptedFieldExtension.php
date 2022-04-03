@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class AeliotDoctrineEncryptedFieldExtension extends Extension implements PrependExtensionInterface
+final class AeliotDoctrineEncryptedFieldExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

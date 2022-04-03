@@ -12,10 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FunctionUninstallCommand extends Command
+final class FunctionUninstallCommand extends Command
 {
-    protected static $defaultName = 'doctrine-encrypted-field:function:uninstall';
-
     /**
      * @var string[]
      */
@@ -28,7 +26,7 @@ class FunctionUninstallCommand extends Command
         FunctionManager $functionManager,
         ConnectionRegistry $registry
     ) {
-        parent::__construct(null);
+        parent::__construct('doctrine-encrypted-field:function:uninstall');
         $this->functionManager = $functionManager;
         $this->encryptedConnections = $encryptedConnections;
         $this->registry = $registry;

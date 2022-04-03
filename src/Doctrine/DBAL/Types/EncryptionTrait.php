@@ -17,10 +17,8 @@ trait EncryptionTrait
 
     /**
      * @param string $sqlExpr
-     *
-     * @return string
      */
-    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
+    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform): string
     {
         return $this->getEncryptSQLExpression($sqlExpr, $platform);
     }
@@ -28,10 +26,8 @@ trait EncryptionTrait
     /**
      * @param string $sqlExpr
      * @param AbstractPlatform $platform
-     *
-     * @return string
      */
-    public function convertToPHPValueSQL($sqlExpr, $platform)
+    public function convertToPHPValueSQL($sqlExpr, $platform): string
     {
         return $this->getDecryptSQLExpression($sqlExpr, $platform);
     }

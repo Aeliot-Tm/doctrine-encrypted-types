@@ -5,10 +5,15 @@ declare(strict_types=1);
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\TableEncryptor;
+use Doctrine\Persistence\ConnectionRegistry;
 
-class FieldsDecryptCommand extends FieldsTransformCommand
+final class FieldsDecryptCommand extends FieldsTransformCommand
 {
-    protected static $defaultName = 'doctrine-encrypted-field:fields:decrypt';
+    public function __construct(ConnectionRegistry $registry, TableEncryptor $tableEncryptor)
+    {
+        parent::__construct('doctrine-encrypted-field:fields:decrypt', $registry, $tableEncryptor);
+    }
 
     protected function configure(): void
     {

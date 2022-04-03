@@ -13,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DatabaseEncryptionService
+final class DatabaseEncryptionService
 {
     private EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker;
     private ManagerRegistry $registry;
@@ -99,7 +99,7 @@ class DatabaseEncryptionService
 
         foreach ($metadata->getFieldNames() as $fieldName) {
             $fieldType = $metadata->getTypeOfField($fieldName);
-            if (\in_array($fieldType, EncryptedTypeEnum::getAll(), true)) {
+            if (\in_array($fieldType, EncryptedTypeEnum::all(), true)) {
                 $fieldsToEncrypt[] = $fieldName;
             }
         }

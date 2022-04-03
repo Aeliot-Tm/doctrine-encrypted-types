@@ -8,7 +8,7 @@ use Doctrine\DBAL\Connection;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class TableEncryptor
+final class TableEncryptor
 {
     /**
      * @param string[] $columns

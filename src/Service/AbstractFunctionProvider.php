@@ -6,6 +6,7 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\DatabaseErrorEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\PlatformEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class AbstractFunctionProvider implements FunctionProviderInterface
@@ -34,7 +35,7 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
     {
         return [
             FunctionEnum::FUNCTION_DECRYPT => [
-                'mysql' => sprintf(
+                PlatformEnum::MYSQL => sprintf(
                     'CREATE FUNCTION %1$s(source_data TEXT) RETURNS TEXT DETERMINISTIC
                      BEGIN
                         RETURN AES_DECRYPT(source_data, %2$s());
@@ -44,7 +45,7 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
                 ),
             ],
             FunctionEnum::FUNCTION_ENCRYPT => [
-                'mysql' => sprintf(
+                PlatformEnum::MYSQL => sprintf(
                     'CREATE FUNCTION %1$s(source_data TEXT) RETURNS TEXT DETERMINISTIC
                      BEGIN
                         RETURN AES_ENCRYPT(source_data, %2$s());
@@ -54,7 +55,7 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
                 ),
             ],
             FunctionEnum::FUNCTION_GET_ENCRYPTION_KEY => [
-                'mysql' => sprintf(
+                PlatformEnum::MYSQL => sprintf(
                     'CREATE FUNCTION %1$s() RETURNS TEXT DETERMINISTIC
                      BEGIN
                         IF (@encryption_key IS NULL OR LENGTH(@encryption_key) = 0) THEN

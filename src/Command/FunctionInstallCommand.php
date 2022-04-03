@@ -12,10 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FunctionInstallCommand extends Command
+final class FunctionInstallCommand extends Command
 {
-    protected static $defaultName = 'doctrine-encrypted-field:function:install';
-
     /**
      * @var string[]
      */
@@ -28,7 +26,7 @@ class FunctionInstallCommand extends Command
         FunctionManager $functionManager,
         ConnectionRegistry $registry
     ) {
-        parent::__construct(null);
+        parent::__construct('doctrine-encrypted-field:function:install');
         $this->functionManager = $functionManager;
         $this->encryptedConnections = $encryptedConnections;
         $this->registry = $registry;

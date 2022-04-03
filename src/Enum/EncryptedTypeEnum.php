@@ -15,7 +15,7 @@ final class EncryptedTypeEnum
     /**
      * @return string[]
      */
-    public static function getAll(): array
+    public static function all(): array
     {
         return [
             self::AELIOT_ENCRYPTED_DATE,

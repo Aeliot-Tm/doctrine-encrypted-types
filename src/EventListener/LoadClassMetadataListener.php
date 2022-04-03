@@ -11,12 +11,12 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
-class LoadClassMetadataListener
+final class LoadClassMetadataListener
 {
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $classMetadata = $eventArgs->getClassMetadata();
-        $encryptedTypes = EncryptedTypeEnum::getAll();
+        $encryptedTypes = EncryptedTypeEnum::all();
         /** @var AbstractPlatform $platform */
         $platform = $eventArgs->getEntityManager()->getConnection()->getDatabasePlatform();
 

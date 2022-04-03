@@ -52,10 +52,10 @@ class EncryptionKeyInjectorSubscriber implements EventSubscriber
     {
         $currentConnection = $event->getConnection();
         $connectionName = $this->getConnectionName($currentConnection);
-        if (in_array($connectionName, $this->encryptedConnections, true)) {
+        if (\in_array($connectionName, $this->encryptedConnections, true)) {
             $key = $this->secretProvider->getSecret($connectionName);
             if (!$key) {
-                throw new SecurityConfigurationException('Encryption key is not defined');
+                throw new SecurityConfigurationException('Project encryption key is undefined.');
             }
             $statement = $currentConnection->prepare('SET @encryption_key = :encryption_key;');
             if ($logger = $currentConnection->getConfiguration()->getSQLLogger()) {
@@ -70,7 +70,7 @@ class EncryptionKeyInjectorSubscriber implements EventSubscriber
         }
     }
 
-    private function getConnectionName(Connection $currentConnection)
+    private function getConnectionName(Connection $currentConnection): ?string
     {
         foreach ($this->registry->getConnections() as $name => $connection) {
             if ($connection === $currentConnection) {

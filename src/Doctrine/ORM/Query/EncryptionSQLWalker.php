@@ -35,7 +35,7 @@ class EncryptionSQLWalker extends SqlWalker
             $metadata = $this->getQueryComponent($dqlAlias)['metadata'];
             $fieldMapping = $metadata->getFieldMapping($fieldName);
 
-            if (in_array($fieldMapping['type'], EncryptedTypeEnum::getAll(), true)) {
+            if (in_array($fieldMapping['type'], EncryptedTypeEnum::all(), true)) {
                 $platform = $this->getConnection()->getDatabasePlatform();
                 $sql = $this->getDecryptSQLExpression($sql, $platform);
             }

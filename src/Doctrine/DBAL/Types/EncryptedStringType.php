@@ -8,7 +8,7 @@ use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
-class EncryptedStringType extends StringType implements EncryptedFieldLengthInterface
+final class EncryptedStringType extends StringType implements EncryptedFieldLengthInterface
 {
     use EncryptionTrait;
 

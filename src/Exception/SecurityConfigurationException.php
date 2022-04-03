@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Exception;
 
-class SecurityConfigurationException extends \Exception
+final class SecurityConfigurationException extends \Exception
 {
 }

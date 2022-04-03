@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Enum;
 
-class FunctionEnum
+final class FunctionEnum
 {
     public const FUNCTION_DECRYPT = 'AELIOT_DECRYPT';
     public const FUNCTION_ENCRYPT = 'AELIOT_ENCRYPT';
@@ -13,7 +13,7 @@ class FunctionEnum
     /**
      * @return string[]
      */
-    public static function getAll(): array
+    public static function all(): array
     {
         return [self::FUNCTION_DECRYPT, self::FUNCTION_ENCRYPT, self::FUNCTION_GET_ENCRYPTION_KEY];
     }

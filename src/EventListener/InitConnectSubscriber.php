@@ -10,7 +10,7 @@ use Doctrine\DBAL\Event\ConnectionEventArgs;
 use Doctrine\DBAL\Events;
 use Doctrine\Persistence\ConnectionRegistry;
 
-class InitConnectSubscriber implements EventSubscriber
+final class InitConnectSubscriber implements EventSubscriber
 {
     private ConnectionRegistry $connectionRegistry;
 
@@ -39,7 +39,7 @@ class InitConnectSubscriber implements EventSubscriber
     {
         $connection = $event->getConnection();
         $connectionName = $this->getConnectionName($connection);
-        if ($connectionName && in_array($connectionName, $this->encryptedConnections, true)) {
+        if ($connectionName && \in_array($connectionName, $this->encryptedConnections, true)) {
             $connectionParameters = $connection->getParams();
             $characterSet = $connectionParameters['charset'] ?? 'utf8mb4';
             $collation = $connectionParameters['defaultTableOptions']['collate'] ?? 'utf8mb4_unicode_ci';

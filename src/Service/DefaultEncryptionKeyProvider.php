@@ -6,7 +6,7 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
 
-class DefaultEncryptionKeyProvider implements EncryptionKeyProviderInterface
+final class DefaultEncryptionKeyProvider implements EncryptionKeyProviderInterface
 {
     public function getSecret(string $connectionName): string
     {
