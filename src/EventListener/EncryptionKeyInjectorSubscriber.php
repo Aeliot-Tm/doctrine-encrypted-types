@@ -2,6 +2,7 @@
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Logging\MaskingParamsSQLLogger;
 use Aeliot\Bundle\DoctrineEncryptedField\Exception\SecurityConfigurationException;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
 use Doctrine\Common\EventSubscriber;
@@ -57,6 +58,14 @@ class EncryptionKeyInjectorSubscriber implements EventSubscriber
                 throw new SecurityConfigurationException('Encryption key is not defined');
             }
             $statement = $currentConnection->prepare('SET @encryption_key = :encryption_key;');
+            if ($logger = $currentConnection->getConfiguration()->getSQLLogger()) {
+                $currentConnection->getConfiguration()->setSQLLogger(
+                    new MaskingParamsSQLLogger(
+                        $logger,
+                        ['encryption_key']
+                    )
+                );
+            }
             $statement->execute(['encryption_key' => $key]);
         }
     }
