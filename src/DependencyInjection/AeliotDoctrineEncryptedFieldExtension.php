@@ -30,17 +30,17 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('aeliot.doctrine_encrypted_field.encrypted_connections', $config['encrypted_connections']);
+
+        $loader = new YamlFileLoader($container, new FileLocator(sprintf('%s/../../config', __DIR__)));
+        $loader->load('services.yml');
+
         $container->setAlias(
             EncryptionAvailabilityCheckerInterface::class,
             new Alias($config['encryption_availability_checker'])
         );
         $container->setAlias(EncryptionKeyProviderInterface::class, new Alias($config['encryption_key_provider']));
         $container->setAlias(FunctionProviderInterface::class, new Alias($config['functions_provider']));
-
-        $container->setParameter('aeliot.doctrine_encrypted_field.encrypted_connections', $config['encrypted_connections']);
-
-        $loader = new YamlFileLoader($container, new FileLocator(sprintf('%s/../../config', __DIR__)));
-        $loader->load('services.yml');
     }
 
     public function prepend(ContainerBuilder $container): void
