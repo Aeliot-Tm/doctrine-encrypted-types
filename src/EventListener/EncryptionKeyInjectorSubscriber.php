@@ -52,7 +52,9 @@ final class EncryptionKeyInjectorSubscriber implements EventSubscriber
             if (!$key) {
                 throw new SecurityConfigurationException('Project encryption key is undefined.');
             }
-            $statement = $currentConnection->prepare('SET @encryption_key = :encryption_key;');
+            $this->secretProvider->prepareConnection($currentConnection);
+            $param = $this->secretProvider->wrapParameter(':encryption_key');
+            $statement = $currentConnection->prepare(sprintf('SET @encryption_key = %s;', $param));
             if ($logger = $currentConnection->getConfiguration()->getSQLLogger()) {
                 $currentConnection->getConfiguration()->setSQLLogger(
                     new MaskingParamsSQLLogger(
