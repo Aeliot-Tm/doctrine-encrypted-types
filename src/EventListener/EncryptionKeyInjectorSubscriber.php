@@ -12,23 +12,16 @@ use Doctrine\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Event\ConnectionEventArgs;
 use Doctrine\DBAL\Events;
+use Doctrine\DBAL\Exception as DBALException;
 
-class EncryptionKeyInjectorSubscriber implements EventSubscriber
+final class EncryptionKeyInjectorSubscriber implements EventSubscriber
 {
     /**
-     * @var string[] $encryptedConnections
+     * @var string[]
      */
-    private $encryptedConnections;
-
-    /**
-     * @var ConnectionRegistry
-     */
-    private $registry;
-
-    /**
-     * @var EncryptionKeyProviderInterface
-     */
-    private $secretProvider;
+    private array $encryptedConnections;
+    private ConnectionRegistry $registry;
+    private EncryptionKeyProviderInterface $secretProvider;
 
     /**
      * @param string[] $encryptedConnections
@@ -50,7 +43,7 @@ class EncryptionKeyInjectorSubscriber implements EventSubscriber
         ];
     }
 
-    public function postConnect(ConnectionEventArgs $event)
+    public function postConnect(ConnectionEventArgs $event): void
     {
         $currentConnection = $event->getConnection();
         $connectionName = $this->getConnectionName($currentConnection);
@@ -68,7 +61,11 @@ class EncryptionKeyInjectorSubscriber implements EventSubscriber
                     )
                 );
             }
-            $statement->execute(['encryption_key' => $key]);
+            try {
+                $statement->execute(['encryption_key' => $key]);
+            } catch (DBALException $exception) {
+                throw new \RuntimeException('Failed to inject encryption key.', 0, $exception);
+            }
         }
     }
 
