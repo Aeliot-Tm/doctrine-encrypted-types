@@ -14,9 +14,9 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('aeliot_doctrine_encrypted_field');
+        $treeBuilder = new TreeBuilder('aeliot_doctrine_encrypted_field');
 
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
                 ->arrayNode('encrypted_connections')
