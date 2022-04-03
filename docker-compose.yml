@@ -4,6 +4,6 @@ services:
     php-cli:
         build:
             context: ./
-            dockerfile: Dockerfile
+            dockerfile: .docker/php/Dockerfile
         volumes:
             - .:/app
