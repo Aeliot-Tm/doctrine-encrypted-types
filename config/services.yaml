@@ -7,7 +7,7 @@ services:
 
     _instanceof:
         Doctrine\Common\EventSubscriber:
-            tags: [doctrine.event_subscriber]
+            tags: [ doctrine.event_subscriber ]
 
     Aeliot\Bundle\DoctrineEncryptedField\:
         resource: '../src/*'
