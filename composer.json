@@ -8,6 +8,15 @@
       "Aeliot\\Bundle\\DoctrineEncryptedField\\": "src/"
     }
   },
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*",
+    "doctrine/orm": "^2.15",
+    "doctrine/persistence": "^2.0|^3.0",
+    "symfony/config": "6.2.*",
+    "symfony/dependency-injection": "6.2.*",
+    "symfony/http-kernel": "6.2.*"
+  },
   "config": {
     "sort-packages": true
   },
@@ -17,15 +26,5 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require": {
-    "php": "^7.4",
-    "ext-json": "*",
-    "ext-pdo": "*",
-    "doctrine/orm": "^2.15",
-    "doctrine/persistence": "^2.5",
-    "symfony/config": "^4.4",
-    "symfony/dependency-injection": "^4.4",
-    "symfony/http-kernel": "^4.4"
-  }
+  "prefer-stable": true
 }
