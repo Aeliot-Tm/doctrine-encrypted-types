@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
-trait EncryptionUtilsTrait
+trait EncryptionExpressionTrait
 {
     private function getEncryptSQLExpression(string $sqlExpr, AbstractPlatform $platform): string
     {

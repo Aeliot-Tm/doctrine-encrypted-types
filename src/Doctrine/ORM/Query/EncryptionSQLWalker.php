@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptionUtilsTrait;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\EncryptionExpressionTrait;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
@@ -18,7 +18,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 final class EncryptionSQLWalker extends SqlWalker
 {
-    use EncryptionUtilsTrait;
+    use EncryptionExpressionTrait;
 
     /**
      * @var array<string,string>

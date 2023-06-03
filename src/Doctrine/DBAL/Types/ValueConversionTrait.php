@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
 
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\EncryptionExpressionTrait;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait ValueConversionTrait
 {
-    use EncryptionUtilsTrait;
+    use EncryptionExpressionTrait;
 
     public function canRequireSQLConversion(): bool
     {
