@@ -9,17 +9,17 @@ use Doctrine\ORM\Query;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class EnableEncryptionSQLWalkerCompilerPass implements CompilerPassInterface
+final class EncryptionSQLWalkerCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
         $connections = $container->getParameter('aeliot.doctrine_encrypted_field.encrypted_connections');
         foreach ($connections as $connection) {
-            $ormConfiguration = $container->getDefinition(sprintf('doctrine.orm.%s_configuration', $connection));
-            $ormConfiguration->addMethodCall('setDefaultQueryHint', [
-                Query::HINT_CUSTOM_OUTPUT_WALKER,
-                EncryptionSQLWalker::class
-            ]);
+            $definition = $container->getDefinition(sprintf('doctrine.orm.%s_configuration', $connection));
+            $definition->addMethodCall(
+                'setDefaultQueryHint',
+                [Query::HINT_CUSTOM_OUTPUT_WALKER, EncryptionSQLWalker::class]
+            );
         }
     }
 }
