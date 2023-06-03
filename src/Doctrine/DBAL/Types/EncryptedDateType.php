@@ -10,7 +10,7 @@ use Doctrine\DBAL\Types\DateType;
 
 final class EncryptedDateType extends DateType implements EncryptedFieldLengthInterface
 {
-    use EncryptionTrait;
+    use ValueConversionTrait;
 
     public function getDefaultFieldLength(AbstractPlatform $platform): ?int
     {

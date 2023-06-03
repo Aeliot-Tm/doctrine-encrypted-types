@@ -10,7 +10,7 @@ use Doctrine\DBAL\Types\StringType;
 
 final class EncryptedStringType extends StringType implements EncryptedFieldLengthInterface
 {
-    use EncryptionTrait;
+    use ValueConversionTrait;
 
     public function getDefaultFieldLength(AbstractPlatform $platform): ?int
     {
