@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aeliot\Bundle\DoctrineEncryptedField\EventListener;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedFieldLengthInterface;
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Exception\ConfigurationException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -16,7 +16,7 @@ final class LoadClassMetadataListener
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $classMetadata = $eventArgs->getClassMetadata();
-        $encryptedTypes = EncryptedTypeEnum::all();
+        $encryptedTypes = FieldTypeEnum::all();
         /** @var AbstractPlatform $platform */
         $platform = $eventArgs->getEntityManager()->getConnection()->getDatabasePlatform();
 

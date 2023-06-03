@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\EncryptionExpressionTrait;
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\ComparisonExpression;
@@ -102,7 +102,7 @@ final class EncryptionSQLWalker extends SqlWalker
             $metadata = $this->getQueryComponent($dqlAlias)['metadata'];
 
             if (($fieldMapping = $this->getFieldMapping($metadata, $fieldName))
-                && in_array($fieldMapping['type'], EncryptedTypeEnum::all(), true)
+                && in_array($fieldMapping['type'], FieldTypeEnum::all(), true)
                 && $platform = $this->getConnection()->getDatabasePlatform()
             ) {
                 $sql = $this->getDecryptSQLExpression($sql, $platform);
@@ -151,7 +151,7 @@ final class EncryptionSQLWalker extends SqlWalker
      */
     private function isExpressionEncrypted(Node $expression): bool
     {
-        return in_array($this->getExpressionFieldType($expression), EncryptedTypeEnum::all(), true);
+        return in_array($this->getExpressionFieldType($expression), FieldTypeEnum::all(), true);
     }
 
     private function processComparisonOfArithmeticExpressions(ComparisonExpression $compExpr): void

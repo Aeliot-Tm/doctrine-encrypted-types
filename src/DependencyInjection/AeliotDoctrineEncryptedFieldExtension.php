@@ -11,7 +11,7 @@ use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedStringType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionAvailabilityCheckerInterface;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
@@ -55,11 +55,11 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
             [
                 'dbal' => [
                     'types' => [
-                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE => EncryptedDateType::class,
-                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
-                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
-                        EncryptedTypeEnum::AELIOT_ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
-                        EncryptedTypeEnum::AELIOT_ENCRYPTED_STRING => EncryptedStringType::class,
+                        FieldTypeEnum::AELIOT_ENCRYPTED_DATE => EncryptedDateType::class,
+                        FieldTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
+                        FieldTypeEnum::AELIOT_ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
+                        FieldTypeEnum::AELIOT_ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
+                        FieldTypeEnum::AELIOT_ENCRYPTED_STRING => EncryptedStringType::class,
                     ],
                 ],
                 'orm' => [

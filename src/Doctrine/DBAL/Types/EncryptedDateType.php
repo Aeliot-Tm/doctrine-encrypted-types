@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\EncryptedTypeEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateType;
 
@@ -19,7 +19,7 @@ final class EncryptedDateType extends DateType implements EncryptedFieldLengthIn
 
     public function getName(): string
     {
-        return EncryptedTypeEnum::AELIOT_ENCRYPTED_DATE;
+        return FieldTypeEnum::AELIOT_ENCRYPTED_DATE;
     }
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Enum;
 
-final class EncryptedTypeEnum
+final class FieldTypeEnum
 {
     public const AELIOT_ENCRYPTED_DATE = 'aeliot_encrypted_date';
     public const AELIOT_ENCRYPTED_DATE_IMMUTABLE = 'aeliot_encrypted_date_immutable';
