@@ -15,25 +15,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 abstract class InstallationCommand extends Command
 {
     /**
-     * @var string[]
-     */
-    protected array $encryptedConnections;
-    protected FunctionManager $functionManager;
-    protected ConnectionRegistry $registry;
-
-    /**
      * @param string[] $encryptedConnections
      */
     public function __construct(
         string $name,
-        array $encryptedConnections,
-        FunctionManager $functionManager,
-        ConnectionRegistry $registry
+        readonly private array $encryptedConnections,
+        readonly protected FunctionManager $functionManager,
+        readonly private ConnectionRegistry $registry,
     ) {
         parent::__construct($name);
-        $this->functionManager = $functionManager;
-        $this->encryptedConnections = $encryptedConnections;
-        $this->registry = $registry;
     }
 
     protected function configure(): void

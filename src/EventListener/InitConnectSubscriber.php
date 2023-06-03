@@ -12,20 +12,11 @@ use Doctrine\Persistence\ConnectionRegistry;
 
 final class InitConnectSubscriber implements EventSubscriber
 {
-    private ConnectionRegistry $connectionRegistry;
-
-    /**
-     * @var string[]
-     */
-    private array $encryptedConnections;
-
     /**
      * @param string[] $encryptedConnections
      */
-    public function __construct(ConnectionRegistry $connectionRegistry, array $encryptedConnections)
+    public function __construct(private ConnectionRegistry $connectionRegistry, private array $encryptedConnections)
     {
-        $this->connectionRegistry = $connectionRegistry;
-        $this->encryptedConnections = $encryptedConnections;
     }
 
     public function getSubscribedEvents(): array

@@ -9,12 +9,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class DatabaseEncryptCommand extends DatabaseTransformCommand
 {
-    private DatabaseEncryptionService $encryptionService;
-
-    public function __construct(DatabaseEncryptionService $encryptionService)
+    public function __construct(private DatabaseEncryptionService $encryptionService)
     {
         parent::__construct('doctrine-encrypted-field:database:encrypt');
-        $this->encryptionService = $encryptionService;
     }
 
     protected function configure(): void

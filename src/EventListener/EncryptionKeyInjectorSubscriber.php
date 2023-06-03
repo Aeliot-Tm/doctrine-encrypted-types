@@ -17,23 +17,13 @@ use Doctrine\DBAL\Exception as DBALException;
 final class EncryptionKeyInjectorSubscriber implements EventSubscriber
 {
     /**
-     * @var string[]
-     */
-    private array $encryptedConnections;
-    private ConnectionRegistry $registry;
-    private EncryptionKeyProviderInterface $secretProvider;
-
-    /**
      * @param string[] $encryptedConnections
      */
     public function __construct(
-        array $encryptedConnections,
-        ConnectionRegistry $registry,
-        EncryptionKeyProviderInterface $secretProvider
+        private array $encryptedConnections,
+        private ConnectionRegistry $registry,
+        private EncryptionKeyProviderInterface $secretProvider,
     ) {
-        $this->encryptedConnections = $encryptedConnections;
-        $this->registry = $registry;
-        $this->secretProvider = $secretProvider;
     }
 
     public function getSubscribedEvents(): array

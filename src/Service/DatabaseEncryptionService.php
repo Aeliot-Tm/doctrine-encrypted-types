@@ -15,18 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class DatabaseEncryptionService
 {
-    private EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker;
-    private ManagerRegistry $registry;
-    private TableEncryptor $tableEncryptor;
-
     public function __construct(
-        EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker,
-        ManagerRegistry $registry,
-        TableEncryptor $tableEncryptor
+        private EncryptionAvailabilityCheckerInterface $databaseEncryptionChecker,
+        private ManagerRegistry $registry,
+        private TableEncryptor $tableEncryptor
     ) {
-        $this->tableEncryptor = $tableEncryptor;
-        $this->registry = $registry;
-        $this->databaseEncryptionChecker = $databaseEncryptionChecker;
     }
 
     public function decrypt(string $managerName, OutputInterface $output = null): void

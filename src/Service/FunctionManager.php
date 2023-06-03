@@ -8,11 +8,8 @@ use Doctrine\DBAL\Connection;
 
 final class FunctionManager
 {
-    private FunctionProviderInterface $functionProvider;
-
-    public function __construct(FunctionProviderInterface $functionProvider)
+    public function __construct(private FunctionProviderInterface $functionProvider)
     {
-        $this->functionProvider = $functionProvider;
     }
 
     public function addFunction(Connection $connection, string $functionName): void

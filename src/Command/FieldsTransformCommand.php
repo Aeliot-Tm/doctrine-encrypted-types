@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\TableEncryptor;
 use Doctrine\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
@@ -16,14 +15,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class FieldsTransformCommand extends Command
 {
-    private ConnectionRegistry $registry;
-    private TableEncryptor $tableEncryptor;
-
-    public function __construct(string $name, ConnectionRegistry $registry, TableEncryptor $tableEncryptor)
-    {
+    public function __construct(
+        string $name,
+        private ConnectionRegistry $registry,
+        private TableEncryptor $tableEncryptor,
+    ) {
         parent::__construct($name);
-        $this->registry = $registry;
-        $this->tableEncryptor = $tableEncryptor;
     }
 
     protected function configure(): void
