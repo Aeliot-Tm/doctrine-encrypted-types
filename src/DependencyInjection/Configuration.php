@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection;
 
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultConnectionPreparer;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultEncryptionAvailabilityChecker;
-use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultEncryptionKeyProvider;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultFunctionProvider;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\DefaultSecretProvider;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -22,12 +23,21 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         $rootChildren = $rootNode->children();
 
+        $this->configConnectionPreparer($rootChildren);
         $this->configEncryptedConnections($rootChildren);
-        $this->configEncryptionKeyProvider($rootChildren);
         $this->configEncryptionAvailabilityChecker($rootChildren);
         $this->configFunctionProvider($rootChildren);
+        $this->configSecretProvider($rootChildren);
 
         return $treeBuilder;
+    }
+
+    private function configConnectionPreparer(NodeBuilder $rootChildren): void
+    {
+        $rootChildren
+            ->scalarNode('connection_preparer')
+            ->cannotBeEmpty()
+            ->defaultValue(DefaultConnectionPreparer::class);
     }
 
     private function configEncryptionAvailabilityChecker(NodeBuilder $rootChildren): void
@@ -38,20 +48,20 @@ final class Configuration implements ConfigurationInterface
             ->defaultValue(DefaultEncryptionAvailabilityChecker::class);
     }
 
-    private function configEncryptionKeyProvider(NodeBuilder $rootChildren): void
-    {
-        $rootChildren
-            ->scalarNode('encryption_key_provider')
-            ->cannotBeEmpty()
-            ->defaultValue(DefaultEncryptionKeyProvider::class);
-    }
-
     private function configFunctionProvider(NodeBuilder $rootChildren): void
     {
         $rootChildren
             ->scalarNode('functions_provider')
             ->cannotBeEmpty()
             ->defaultValue(DefaultFunctionProvider::class);
+    }
+
+    private function configSecretProvider(NodeBuilder $rootChildren): void
+    {
+        $rootChildren
+            ->scalarNode('secret_provider')
+            ->cannotBeEmpty()
+            ->defaultValue(DefaultSecretProvider::class);
     }
 
     private function configEncryptedConnections(NodeBuilder $rootChildren): void
