@@ -6,10 +6,8 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
 
-interface EncryptionKeyProviderInterface
+interface ConnectionPreparerInterface
 {
-    public function getSecret(string $connectionName): string;
-
     public function prepareConnection(Connection $connection): void;
 
     public function wrapParameter(string $sqlExpr): string;

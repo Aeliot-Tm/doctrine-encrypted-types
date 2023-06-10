@@ -13,8 +13,9 @@ use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\ConnectionPreparerInterface;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionAvailabilityCheckerInterface;
-use Aeliot\Bundle\DoctrineEncryptedField\Service\EncryptionKeyProviderInterface;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\SecretProviderInterface;
 use Aeliot\Bundle\DoctrineEncryptedField\Service\FunctionProviderInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
@@ -35,12 +36,13 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
         $loader = new YamlFileLoader($container, new FileLocator(sprintf('%s/../../config', __DIR__)));
         $loader->load('services.yaml');
 
+        $container->setAlias(ConnectionPreparerInterface::class, new Alias($config['connection_preparer']));
         $container->setAlias(
             EncryptionAvailabilityCheckerInterface::class,
-            new Alias($config['encryption_availability_checker'])
+            new Alias($config['encryption_availability_checker']),
         );
-        $container->setAlias(EncryptionKeyProviderInterface::class, new Alias($config['encryption_key_provider']));
         $container->setAlias(FunctionProviderInterface::class, new Alias($config['functions_provider']));
+        $container->setAlias(SecretProviderInterface::class, new Alias($config['secret_provider']));
     }
 
     public function prepend(ContainerBuilder $container): void
