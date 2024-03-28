@@ -28,7 +28,15 @@ RUN set -xe; \
 
 WORKDIR /app
 
-COPY . ./
+COPY composer.* ./
 
-RUN set -xe; \
+#RUN set -xe; \
+#    composer install --no-autoloader --no-dev --no-interaction --no-progress --no-scripts --prefer-dist && \
+#    composer clear-cache && \
+#    rm -rf ./vendor/*/*/tests
+
+COPY . ./
+RUN chmod +x ./docker-entrypoint.sh && \
     rm -rf ./.docker
+
+#RUN composer dump-autoload --optimize
