@@ -26,20 +26,27 @@ final class InitConnectSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * @todo: implement another way to determine default character set and collation for connection
+     */
     public function postConnect(ConnectionEventArgs $event): void
     {
         $connection = $event->getConnection();
         $connectionName = $this->getConnectionName($connection);
-        if ($connectionName && \in_array($connectionName, $this->encryptedConnections, true)) {
+
+        if (\in_array($connectionName, $this->encryptedConnections, true)) {
             $connectionParameters = $connection->getParams();
+
             $characterSet = $connectionParameters['charset'] ?? 'utf8mb4';
             $collation = $connectionParameters['defaultTableOptions']['collate'] ?? 'utf8mb4_unicode_ci';
 
-            $statement = $connection->prepare('SET NAMES :character_set COLLATE :collation');
-            $statement->execute([
-                'character_set' => $characterSet,
-                'collation' => $collation,
-            ]);
+            $sql = 'SET NAMES :character_set COLLATE :collation';
+
+            $connection->prepare($sql)
+                ->executeStatement([
+                    'character_set' => $characterSet,
+                    'collation' => $collation,
+                ]);
         }
     }
 

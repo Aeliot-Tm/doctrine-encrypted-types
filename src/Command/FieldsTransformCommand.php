@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Service\TableEncryptor;
-use Doctrine\Persistence\ConnectionRegistry;
 use Doctrine\DBAL\Connection;
+use Doctrine\Persistence\ConnectionRegistry;
+use Aeliot\Bundle\DoctrineEncryptedField\Service\TableEncryptor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class FieldsTransformCommand extends Command
 {
     public function __construct(
-        string $name,
         private ConnectionRegistry $registry,
         private TableEncryptor $tableEncryptor,
     ) {
-        parent::__construct($name);
+        parent::__construct();
     }
 
     protected function configure(): void
     {
-        $this->addArgument('connection', InputArgument::OPTIONAL, 'Connection name');
+        $this->addArgument('connection', InputArgument::REQUIRED, 'Connection name');
         $this->addOption(
             'fields',
             null,
@@ -37,18 +37,19 @@ abstract class FieldsTransformCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $anOutput = $input->getOption('dump-sql') ? $output : new NullOutput();
         /** @var Connection $connection */
         $connection = $this->registry->getConnection($input->getArgument('connection'));
-        $passedOutput = $input->getOption('dump-sql') ? $output : null;
+        $tableFields = $input->getOption('fields');
         $function = $this->getFunction();
-        $options = $input->getOption('fields');
-        foreach ($options as $option) {
-            list($table, $fieldsList) = explode(':', $option, 2);
+
+        foreach ($tableFields as $option) {
+            [$table, $fieldsList] = explode(':', $option, 2);
             $fields = explode(',', $fieldsList);
-            $this->tableEncryptor->convert($connection, $table, $fields, $function, $passedOutput);
+            $this->tableEncryptor->convert($connection, $table, $fields, $function, $anOutput);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     abstract protected function getFunction(): string;

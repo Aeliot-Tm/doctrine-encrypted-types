@@ -19,11 +19,11 @@ final class EncryptedDateTimeType extends DateTimeType implements EncryptedField
 
     public function getName(): string
     {
-        return FieldTypeEnum::AELIOT_ENCRYPTED_DATETIME;
+        return FieldTypeEnum::ENCRYPTED_DATETIME;
     }
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBinaryTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getBinaryTypeDeclarationSQL($column);
     }
 }

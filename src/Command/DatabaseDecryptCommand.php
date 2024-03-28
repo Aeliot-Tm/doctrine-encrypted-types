@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace Aeliot\Bundle\DoctrineEncryptedField\Command;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Service\DatabaseEncryptionService;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'doctrine-encrypted-field:database:decrypt')]
 final class DatabaseDecryptCommand extends DatabaseTransformCommand
 {
-    public function __construct(private DatabaseEncryptionService $encryptionService)
-    {
-        parent::__construct('doctrine-encrypted-field:database:decrypt');
-    }
-
     protected function configure(): void
     {
         parent::configure();
@@ -21,7 +18,7 @@ final class DatabaseDecryptCommand extends DatabaseTransformCommand
         $this->setDescription('Decrypt database');
     }
 
-    protected function transform(string $managerName, ?OutputInterface $output): void
+    protected function transform(string $managerName, OutputInterface $output): void
     {
         $this->encryptionService->decrypt($managerName, $output);
     }

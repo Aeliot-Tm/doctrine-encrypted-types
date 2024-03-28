@@ -21,7 +21,7 @@ trait ValueConversionTrait
      */
     public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform): string
     {
-        return $this->getEncryptSQLExpression($sqlExpr, $platform);
+        return $this->getEncryptSQLExpression($sqlExpr);
     }
 
     /**
@@ -30,6 +30,6 @@ trait ValueConversionTrait
      */
     public function convertToPHPValueSQL($sqlExpr, $platform): string
     {
-        return $this->getDecryptSQLExpression($sqlExpr, $platform);
+        return $this->getDecryptSQLExpression($sqlExpr);
     }
 }

@@ -7,9 +7,9 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 
 /**
- * "AELIOT_ENCRYPT" "(" SimpleArithmeticExpression ")"
+ * "APP_ENCRYPT" "(" SimpleArithmeticExpression ")".
  */
 final class EncryptFunction extends AbstractSingleArgumentFunction
 {
-    protected const FUNCTION_NAME = FunctionEnum::FUNCTION_ENCRYPT;
+    protected const FUNCTION_NAME = FunctionEnum::ENCRYPT;
 }

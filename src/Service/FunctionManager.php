@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 
 final class FunctionManager
 {
@@ -12,9 +14,10 @@ final class FunctionManager
     {
     }
 
-    public function addFunction(Connection $connection, string $functionName): void
+    public function addFunction(Connection $connection, string $functionName, ?OutputInterface $output): void
     {
-        $connection->prepare($this->getFunctionDefinition($connection, $functionName))->execute();
+        $sql = $this->functionProvider->getDefinition($functionName, $connection);
+        $this->executeOrShow($connection, $sql, $output);
     }
 
     /**
@@ -42,13 +45,18 @@ final class FunctionManager
             ->fetchAssociative()['functions_count'];
     }
 
-    public function removeFunction(Connection $connection, string $functionName): void
+    public function removeFunction(Connection $connection, string $functionName, ?OutputInterface $output): void
     {
-        $connection->prepare(sprintf('DROP FUNCTION %s;', $functionName))->execute();
+        $sql = sprintf('DROP FUNCTION %s;', $functionName);
+        $this->executeOrShow($connection, $sql, $output);
     }
 
-    private function getFunctionDefinition(Connection $connection, string $functionName): string
+    private function executeOrShow(Connection $connection, string $sql, ?OutputInterface $output): void
     {
-        return $this->functionProvider->getDefinition($functionName, $connection->getDatabasePlatform());
+        if ($output && !$output instanceof NullOutput) {
+            $output->writeln($sql);
+        } else {
+            $connection->prepare($sql)->executeStatement();
+        }
     }
 }

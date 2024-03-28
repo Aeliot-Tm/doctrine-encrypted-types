@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\ComparisonExpression;
 use Doctrine\ORM\Query\AST\InputParameter;
+use Doctrine\ORM\Query\AST\Literal;
 use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\AST\NullComparisonExpression;
 use Doctrine\ORM\Query\AST\PathExpression;
@@ -49,11 +50,11 @@ final class EncryptionSQLWalker extends SqlWalker
     {
         $inputParameter = parent::walkInputParameter($inputParam);
 
-        if ($inputParam->isNamed
-            && in_array($inputParam->name, $this->parametersWithAdditionalEncryption, true)
-            && $platform = $this->getConnection()->getDatabasePlatform()
+        if (
+            $inputParam->isNamed
+            && \in_array($inputParam->name, $this->parametersWithAdditionalEncryption, true)
         ) {
-            $inputParameter = $this->getEncryptSQLExpression($inputParameter, $platform);
+            $inputParameter = $this->getEncryptSQLExpression($inputParameter);
         }
 
         return $inputParameter;
@@ -78,10 +79,10 @@ final class EncryptionSQLWalker extends SqlWalker
     {
         $sql = parent::walkPathExpression($pathExpr);
 
-        if ($pathExpr->type === PathExpression::TYPE_STATE_FIELD) {
+        if (PathExpression::TYPE_STATE_FIELD === $pathExpr->type) {
             $pathExpressionHash = spl_object_hash($pathExpr);
 
-            if (!array_key_exists($pathExpressionHash, $this->pathExpressionsWithSkippedDecryption)) {
+            if (!\array_key_exists($pathExpressionHash, $this->pathExpressionsWithSkippedDecryption)) {
                 $sql = $this->getDecryptedPathExpression($sql, $pathExpr->identificationVariable, $pathExpr->field);
             }
         }
@@ -95,35 +96,36 @@ final class EncryptionSQLWalker extends SqlWalker
         $this->pathExpressionsWithSkippedDecryption = [];
     }
 
-    private function getDecryptedPathExpression(string &$sql, string $dqlAlias, string $fieldName = null): string
+    private function getDecryptedPathExpression(string &$sql, string $dqlAlias, ?string $fieldName = null): string
     {
-        if ($fieldName && array_key_exists($dqlAlias, $this->getQueryComponents())) {
-            /** @var ClassMetadata $metadata */
+        if ($fieldName && \array_key_exists($dqlAlias, $this->getQueryComponents())) {
+            /** @var ClassMetadata<object> $metadata */
             $metadata = $this->getQueryComponent($dqlAlias)['metadata'];
 
-            if (($fieldMapping = $this->getFieldMapping($metadata, $fieldName))
-                && in_array($fieldMapping['type'], FieldTypeEnum::all(), true)
-                && $platform = $this->getConnection()->getDatabasePlatform()
+            if (
+                ($fieldMapping = $this->getFieldMapping($metadata, $fieldName))
+                && \in_array($fieldMapping['type'], FieldTypeEnum::all(), true)
             ) {
-                $sql = $this->getDecryptSQLExpression($sql, $platform);
+                $sql = $this->getDecryptSQLExpression($sql);
             }
         }
 
         return $sql;
     }
 
-    /**
-     * @param InputParameter|PathExpression $expression
-     */
     private function getExpressionFieldType(Node $expression): ?string
     {
-        if ($metadata = $this->getExpressionMetadata($expression)) {
-            return $this->getFieldType($metadata, $expression->field);
+        $metadata = $this->getExpressionMetadata($expression);
+        if ($metadata && ($fieldName = $expression->field ?? null)) {
+            return $this->getFieldType($metadata, $fieldName);
         }
 
         return null;
     }
 
+    /**
+     * @return ClassMetadata<object>|null
+     */
     private function getExpressionMetadata(Node $expression): ?ClassMetadata
     {
         if ($expression instanceof PathExpression) {
@@ -134,6 +136,8 @@ final class EncryptionSQLWalker extends SqlWalker
     }
 
     /**
+     * @param ClassMetadata<object> $metadata
+     *
      * @return array<array-key,mixed>|null
      */
     private function getFieldMapping(ClassMetadata $metadata, string $fieldName): ?array
@@ -141,30 +145,38 @@ final class EncryptionSQLWalker extends SqlWalker
         return $metadata->hasField($fieldName) ? $metadata->getFieldMapping($fieldName) : null;
     }
 
+    /**
+     * @param ClassMetadata<object> $metadata
+     */
     private function getFieldType(ClassMetadata $metadata, string $fieldName): ?string
     {
         return ($fieldMapping = $this->getFieldMapping($metadata, $fieldName)) ? $fieldMapping['type'] : null;
     }
 
-    /**
-     * @param InputParameter|PathExpression $expression
-     */
     private function isExpressionEncrypted(Node $expression): bool
     {
-        return in_array($this->getExpressionFieldType($expression), FieldTypeEnum::all(), true);
+        if ($expression instanceof Literal) {
+            return false;
+        }
+
+        return \in_array($this->getExpressionFieldType($expression), FieldTypeEnum::all(), true);
     }
 
-    private function processComparisonOfArithmeticExpressions(ComparisonExpression $compExpr): void
+    /**
+     * @param ComparisonExpression $compExpr
+     */
+    private function processComparisonOfArithmeticExpressions($compExpr): void
     {
-        if (!$compExpr->leftExpression instanceof ArithmeticExpression
+        if (
+            !$compExpr->leftExpression instanceof ArithmeticExpression
             || !$compExpr->rightExpression instanceof ArithmeticExpression
         ) {
             return;
         }
 
-        /** @var InputParameter|PathExpression $leftExpression */
+        /** @var Node|null $leftExpression */
         $leftExpression = $compExpr->leftExpression->simpleArithmeticExpression;
-        /** @var InputParameter|PathExpression $rightExpression */
+        /** @var Node|null $rightExpression */
         $rightExpression = $compExpr->rightExpression->simpleArithmeticExpression;
 
         if (!$leftExpression || !$rightExpression) {
@@ -182,7 +194,7 @@ final class EncryptionSQLWalker extends SqlWalker
             $this->pathExpressionsWithSkippedDecryption[$rightExpressionHash] = $rightExpression;
         }
 
-        if (in_array($compExpr->operator, [Comparison::EQ, Comparison::NEQ], true)) {
+        if (\in_array($compExpr->operator, [Comparison::EQ, Comparison::NEQ], true)) {
             $this->processEqComparisonOfExpressions(
                 $isLeftExpressionEncrypted,
                 $leftExpression,
@@ -201,8 +213,8 @@ final class EncryptionSQLWalker extends SqlWalker
 
     private function processNullComparisonExpression(NullComparisonExpression $nullCompExpr): void
     {
-        /** @var PathExpression $expression */
-        if (!$expression = $nullCompExpr->expression) {
+        /** @var PathExpression|null $expression */
+        if (!$expression = $nullCompExpr->expression ?? null) {
             return;
         }
 
@@ -211,23 +223,19 @@ final class EncryptionSQLWalker extends SqlWalker
         }
     }
 
-    /**
-     * @param InputParameter|PathExpression $firstExpression
-     * @param InputParameter|PathExpression $secondExpression
-     */
     private function processEqComparisonOfExpressions(
         bool $isFirstExpressionEncrypted,
         Node $firstExpression,
         string $firstExpressionHash,
         Node $secondExpression
     ): void {
-        if (!$secondExpression instanceof InputParameter || !$isFirstExpressionEncrypted) {
+        if (!$isFirstExpressionEncrypted || !$secondExpression instanceof InputParameter) {
             return;
         }
 
         $this->pathExpressionsWithSkippedDecryption[$firstExpressionHash] = $firstExpression;
 
-        if ($secondExpression->isNamed) {
+        if ($secondExpression->isNamed ?? false) {
             $secondExpressionName = $secondExpression->name;
             $this->parametersWithAdditionalEncryption[$secondExpressionName] = $secondExpressionName;
         }

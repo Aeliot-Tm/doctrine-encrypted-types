@@ -18,7 +18,7 @@ final class EncryptionSQLWalkerCompilerPass implements CompilerPassInterface
             $definition = $container->getDefinition(sprintf('doctrine.orm.%s_configuration', $connection));
             $definition->addMethodCall(
                 'setDefaultQueryHint',
-                [Query::HINT_CUSTOM_OUTPUT_WALKER, EncryptionSQLWalker::class]
+                [Query::HINT_CUSTOM_OUTPUT_WALKER, EncryptionSQLWalker::class],
             );
         }
     }

@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Aeliot\Bundle\DoctrineEncryptedField\Service;
 
+use Aeliot\Bundle\DoctrineEncryptedField\Exception\ConfigurationException;
+use Doctrine\DBAL\Connection;
+use LogicException;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\DatabaseErrorEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
+use Aeliot\Bundle\DoctrineEncryptedField\Enum\ParameterEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\PlatformEnum;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class AbstractFunctionProvider implements FunctionProviderInterface
 {
@@ -16,13 +19,15 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
         return array_keys($this->getDefinitions());
     }
 
-    public function getDefinition(string $functionName, AbstractPlatform $platform): string
+    public function getDefinition(string $functionName, Connection $connection): string
     {
         $definitions = $this->getDefinitions();
-        $platformName = $platform->getName();
+        $platformName = $connection->getDatabasePlatform()->getName();
 
         if (!isset($definitions[$functionName][$platformName])) {
-            throw new \LogicException(sprintf('Undefined function %s for platform %s', $functionName, $platformName));
+            throw new ConfigurationException(
+                sprintf('Undefined function "%s" for platform "%s".', $functionName, $platformName)
+            );
         }
 
         return $definitions[$functionName][$platformName];
@@ -34,37 +39,38 @@ abstract class AbstractFunctionProvider implements FunctionProviderInterface
     protected function getDefinitions(): array
     {
         return [
-            FunctionEnum::FUNCTION_DECRYPT => [
+            FunctionEnum::DECRYPT => [
                 PlatformEnum::MYSQL => sprintf(
-                    'CREATE FUNCTION %1$s(source_data TEXT) RETURNS TEXT DETERMINISTIC
-                     BEGIN
-                        RETURN AES_DECRYPT(source_data, %2$s());
-                     END;',
-                    FunctionEnum::FUNCTION_DECRYPT,
-                    FunctionEnum::FUNCTION_GET_ENCRYPTION_KEY
+                    'CREATE FUNCTION %1$s(source_data LONGBLOB) RETURNS LONGTEXT DETERMINISTIC
+                        BEGIN
+                            RETURN AES_DECRYPT(source_data, %2$s());
+                        END;',
+                    FunctionEnum::DECRYPT,
+                    FunctionEnum::GET_ENCRYPTION_KEY
                 ),
             ],
-            FunctionEnum::FUNCTION_ENCRYPT => [
+            FunctionEnum::ENCRYPT => [
                 PlatformEnum::MYSQL => sprintf(
-                    'CREATE FUNCTION %1$s(source_data TEXT) RETURNS TEXT DETERMINISTIC
-                     BEGIN
-                        RETURN AES_ENCRYPT(source_data, %2$s());
-                     END;',
-                    FunctionEnum::FUNCTION_ENCRYPT,
-                    FunctionEnum::FUNCTION_GET_ENCRYPTION_KEY
+                    'CREATE FUNCTION %1$s(source_data LONGTEXT) RETURNS LONGBLOB DETERMINISTIC
+                        BEGIN
+                            RETURN AES_ENCRYPT(source_data, %2$s());
+                        END;',
+                    FunctionEnum::ENCRYPT,
+                    FunctionEnum::GET_ENCRYPTION_KEY
                 ),
             ],
-            FunctionEnum::FUNCTION_GET_ENCRYPTION_KEY => [
+            FunctionEnum::GET_ENCRYPTION_KEY => [
                 PlatformEnum::MYSQL => sprintf(
                     'CREATE FUNCTION %1$s() RETURNS TEXT DETERMINISTIC
-                     BEGIN
-                        IF (@encryption_key IS NULL OR LENGTH(@encryption_key) = 0) THEN
-                            SIGNAL SQLSTATE \'%2$s\'
-                                SET MESSAGE_TEXT = \'Encryption key not found\';
-                        END IF;
-                        RETURN @encryption_key;
-                     END;',
-                    FunctionEnum::FUNCTION_GET_ENCRYPTION_KEY,
+                        BEGIN
+                            IF (@%2$s IS NULL OR LENGTH(@%2$s) = 0) THEN
+                                SIGNAL SQLSTATE \'%3$s\'
+                                    SET MESSAGE_TEXT = \'Encryption key not found\';
+                            END IF;
+                            RETURN @%2$s;
+                        END;',
+                    FunctionEnum::GET_ENCRYPTION_KEY,
+                    ParameterEnum::ENCRYPTION_KEY,
                     DatabaseErrorEnum::EMPTY_ENCRYPTION_KEY
                 ),
             ],

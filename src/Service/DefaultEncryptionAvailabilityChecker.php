@@ -10,6 +10,6 @@ final class DefaultEncryptionAvailabilityChecker implements EncryptionAvailabili
 {
     public function isEncryptionAvailable(EntityManager $manager, bool $isGoingEncrypt): bool
     {
-        return true;
+        return !empty(getenv('DB_ENCRYPTION_KEY'));
     }
 }

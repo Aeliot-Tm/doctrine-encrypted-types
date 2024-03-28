@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Aeliot\Bundle\DoctrineEncryptedField;
 
 use Aeliot\Bundle\DoctrineEncryptedField\DependencyInjection\Compiler\EncryptionSQLWalkerCompilerPass;
@@ -15,4 +13,3 @@ final class AeliotDoctrineEncryptedFieldBundle extends Bundle
         $container->addCompilerPass(new EncryptionSQLWalkerCompilerPass());
     }
 }
-

@@ -31,7 +31,10 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('aeliot.doctrine_encrypted_field.encrypted_connections', $config['encrypted_connections']);
+        $container->setParameter(
+            'aeliot.doctrine_encrypted_field.encrypted_connections',
+            $config['encrypted_connections'],
+        );
 
         $loader = new YamlFileLoader($container, new FileLocator(sprintf('%s/../../config', __DIR__)));
         $loader->load('services.yaml');
@@ -57,18 +60,18 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
             [
                 'dbal' => [
                     'types' => [
-                        FieldTypeEnum::AELIOT_ENCRYPTED_DATE => EncryptedDateType::class,
-                        FieldTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
-                        FieldTypeEnum::AELIOT_ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
-                        FieldTypeEnum::AELIOT_ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
-                        FieldTypeEnum::AELIOT_ENCRYPTED_STRING => EncryptedStringType::class,
+                        FieldTypeEnum::ENCRYPTED_DATE => EncryptedDateType::class,
+                        FieldTypeEnum::ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
+                        FieldTypeEnum::ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
+                        FieldTypeEnum::ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
+                        FieldTypeEnum::ENCRYPTED_STRING => EncryptedStringType::class,
                     ],
                 ],
                 'orm' => [
                     'dql' => [
                         'string_functions' => [
-                            FunctionEnum::FUNCTION_DECRYPT => DecryptFunction::class,
-                            FunctionEnum::FUNCTION_ENCRYPT => EncryptFunction::class,
+                            FunctionEnum::DECRYPT => DecryptFunction::class,
+                            FunctionEnum::ENCRYPT => EncryptFunction::class,
                         ],
                     ],
                 ],

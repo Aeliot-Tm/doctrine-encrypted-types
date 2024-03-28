@@ -7,9 +7,9 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 
 /**
- * "AELIOT_DECRYPT" "(" SimpleArithmeticExpression ")"
+ * "APP_DECRYPT" "(" SimpleArithmeticExpression ")".
  */
 final class DecryptFunction extends AbstractSingleArgumentFunction
 {
-    protected const FUNCTION_NAME = FunctionEnum::FUNCTION_DECRYPT;
+    protected const FUNCTION_NAME = FunctionEnum::DECRYPT;
 }

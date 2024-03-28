@@ -6,11 +6,11 @@ namespace Aeliot\Bundle\DoctrineEncryptedField\Enum;
 
 final class FieldTypeEnum
 {
-    public const AELIOT_ENCRYPTED_DATE = 'aeliot_encrypted_date';
-    public const AELIOT_ENCRYPTED_DATE_IMMUTABLE = 'aeliot_encrypted_date_immutable';
-    public const AELIOT_ENCRYPTED_DATETIME = 'aeliot_encrypted_datetime';
-    public const AELIOT_ENCRYPTED_DATETIME_IMMUTABLE = 'aeliot_encrypted_datetime_immutable';
-    public const AELIOT_ENCRYPTED_STRING = 'aeliot_encrypted_string';
+    public const ENCRYPTED_DATE = 'encrypted_date';
+    public const ENCRYPTED_DATE_IMMUTABLE = 'encrypted_date_immutable';
+    public const ENCRYPTED_DATETIME = 'encrypted_datetime';
+    public const ENCRYPTED_DATETIME_IMMUTABLE = 'encrypted_datetime_immutable';
+    public const ENCRYPTED_STRING = 'encrypted_string';
 
     /**
      * @return string[]
@@ -18,11 +18,11 @@ final class FieldTypeEnum
     public static function all(): array
     {
         return [
-            self::AELIOT_ENCRYPTED_DATE,
-            self::AELIOT_ENCRYPTED_DATE_IMMUTABLE,
-            self::AELIOT_ENCRYPTED_DATETIME,
-            self::AELIOT_ENCRYPTED_DATETIME_IMMUTABLE,
-            self::AELIOT_ENCRYPTED_STRING,
+            self::ENCRYPTED_DATE,
+            self::ENCRYPTED_DATE_IMMUTABLE,
+            self::ENCRYPTED_DATETIME,
+            self::ENCRYPTED_DATETIME_IMMUTABLE,
+            self::ENCRYPTED_STRING,
         ];
     }
 

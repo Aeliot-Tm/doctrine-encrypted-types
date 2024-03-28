@@ -19,11 +19,11 @@ final class EncryptedStringType extends StringType implements EncryptedFieldLeng
 
     public function getName(): string
     {
-        return FieldTypeEnum::AELIOT_ENCRYPTED_STRING;
+        return FieldTypeEnum::ENCRYPTED_STRING;
     }
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBinaryTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getBinaryTypeDeclarationSQL($column);
     }
 }

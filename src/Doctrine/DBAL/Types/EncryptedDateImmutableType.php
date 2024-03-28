@@ -19,11 +19,11 @@ final class EncryptedDateImmutableType extends DateImmutableType implements Encr
 
     public function getName(): string
     {
-        return FieldTypeEnum::AELIOT_ENCRYPTED_DATE_IMMUTABLE;
+        return FieldTypeEnum::ENCRYPTED_DATE_IMMUTABLE;
     }
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBinaryTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getBinaryTypeDeclarationSQL($column);
     }
 }

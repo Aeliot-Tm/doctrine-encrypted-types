@@ -16,3 +16,8 @@ services:
     Aeliot\Bundle\DoctrineEncryptedField\EventListener\LoadClassMetadataListener:
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
+
+    Aeliot\Bundle\DoctrineEncryptedField\Service\FunctionManager:
+        public: true
+
+    Doctrine\Persistence\ConnectionRegistry: '@Doctrine\Common\Persistence\ManagerRegistry'

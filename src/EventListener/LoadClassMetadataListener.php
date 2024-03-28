@@ -10,15 +10,23 @@ use Aeliot\Bundle\DoctrineEncryptedField\Exception\ConfigurationException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Mapping\ClassMetadata;
 
 final class LoadClassMetadataListener
 {
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
-        $classMetadata = $eventArgs->getClassMetadata();
-        $encryptedTypes = FieldTypeEnum::all();
         /** @var AbstractPlatform $platform */
         $platform = $eventArgs->getEntityManager()->getConnection()->getDatabasePlatform();
+        $this->updateFieldMappings($eventArgs->getClassMetadata(), $platform);
+    }
+
+    /**
+     * @param ClassMetadata<object> $classMetadata
+     */
+    private function updateFieldMappings(ClassMetadata $classMetadata, AbstractPlatform $platform): void
+    {
+        $encryptedTypes = FieldTypeEnum::all();
 
         foreach ($classMetadata->fieldMappings as &$fieldMapping) {
             $fieldType = $fieldMapping['type'];
