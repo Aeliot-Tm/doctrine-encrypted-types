@@ -58,5 +58,6 @@
             "@phpstan-analyse --generate-baseline phpstan-baseline.neon --allow-empty-baseline"
         ],
         "phpstan-clear": "vendor/bin/phpstan clear-result-cache"
-    }
+    },
+    "keywords": ["doctrine", "database", "encryption", "symfony"]
 }
