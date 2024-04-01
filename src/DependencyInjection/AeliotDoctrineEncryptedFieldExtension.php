@@ -8,7 +8,9 @@ use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateImmuta
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateTimeImmutableType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateTimeType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedDateType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedJsonType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedStringType;
+use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types\EncryptedTextType;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\DecryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\ORM\Query\AST\Functions\AELIOT\EncryptFunction;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
@@ -64,7 +66,9 @@ final class AeliotDoctrineEncryptedFieldExtension extends Extension implements P
                         FieldTypeEnum::ENCRYPTED_DATE_IMMUTABLE => EncryptedDateImmutableType::class,
                         FieldTypeEnum::ENCRYPTED_DATETIME => EncryptedDateTimeType::class,
                         FieldTypeEnum::ENCRYPTED_DATETIME_IMMUTABLE => EncryptedDateTimeImmutableType::class,
+                        FieldTypeEnum::ENCRYPTED_JSON => EncryptedJsonType::class,
                         FieldTypeEnum::ENCRYPTED_STRING => EncryptedStringType::class,
+                        FieldTypeEnum::ENCRYPTED_TEXT => EncryptedTextType::class,
                     ],
                 ],
                 'orm' => [
