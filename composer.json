@@ -15,11 +15,6 @@
             "email": "5785276@gmail.com"
         }
     ],
-    "require": {
-        "php": "^8.2",
-        "aeliot/doctrine-encrypted-contracts": "dev-main",
-        "doctrine/dbal": "^3.9"
-    },
     "config": {
         "allow-plugins": {
             "composer/*": true,
@@ -45,6 +40,11 @@
             "url": "git@github.com:Aeliot-Tm/doctrine-encrypted-contracts.git"
         }
     ],
+    "require": {
+        "php": "^8.2",
+        "aeliot/doctrine-encrypted-contracts": "dev-main",
+        "doctrine/dbal": "^3.9"
+    },
     "require-dev": {
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
