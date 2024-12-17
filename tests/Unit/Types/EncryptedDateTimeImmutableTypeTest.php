@@ -11,11 +11,11 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Tests\Unit\Types;
+namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
-use Aeliot\Bundle\DoctrineEncryptedField\Types\EncryptedDateTimeImmutableType;
+use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\FunctionEnum;
+use Aeliot\DoctrineEncryptedTypes\Types\EncryptedDateTimeImmutableType;
 use PHPUnit\Framework\TestCase;
 
 final class EncryptedDateTimeImmutableTypeTest extends TestCase

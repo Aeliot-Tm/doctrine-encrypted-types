@@ -11,9 +11,9 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Types;
+namespace Aeliot\DoctrineEncryptedTypes\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 

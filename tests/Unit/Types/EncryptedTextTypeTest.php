@@ -11,11 +11,11 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Tests\Unit\Types;
+namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
-use Aeliot\Bundle\DoctrineEncryptedField\Types\EncryptedTextType;
+use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\FunctionEnum;
+use Aeliot\DoctrineEncryptedTypes\Types\EncryptedTextType;
 use PHPUnit\Framework\TestCase;
 
 final class EncryptedTextTypeTest extends TestCase

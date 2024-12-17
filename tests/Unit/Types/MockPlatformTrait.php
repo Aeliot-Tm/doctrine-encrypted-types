@@ -11,9 +11,9 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Tests\Unit\Types;
+namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Enum\PlatformEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\PlatformEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
