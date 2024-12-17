@@ -1,10 +1,9 @@
 services:
-    php-fpm:
+    php-cli:
         build:
             context: ./
             dockerfile: .docker/php/Dockerfile
             args:
                 COMPOSER_GITHUB_TOKEN: ${COMPOSER_GITHUB_TOKEN:-''}
-        entrypoint: [ '/app/docker-entrypoint.sh' ]
         volumes:
             - .:/app

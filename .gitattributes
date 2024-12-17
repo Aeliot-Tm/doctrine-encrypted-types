@@ -15,4 +15,3 @@
 /composer.3.9.lock           export-ignore
 /composer.lock               export-ignore
 /docker-compose.yml          export-ignore
-/docker-entrypoint.sh        export-ignore

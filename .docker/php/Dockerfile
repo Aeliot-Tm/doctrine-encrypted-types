@@ -1,7 +1,7 @@
 ARG PHP_VERSION=8.2.7
 ARG DEBIAN_RELEASE=bullseye
 
-FROM php:${PHP_VERSION}-fpm-${DEBIAN_RELEASE}
+FROM php:${PHP_VERSION}-cli-${DEBIAN_RELEASE}
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_NO_INTERACTION 1
@@ -52,7 +52,5 @@ RUN set -xe; \
     rm -rf ./vendor/*/*/tests
 
 COPY . ./
-RUN chmod +x ./docker-entrypoint.sh && \
-    rm -rf ./.docker
 
 RUN composer dump-autoload --optimize
