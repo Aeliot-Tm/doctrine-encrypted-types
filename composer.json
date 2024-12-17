@@ -9,6 +9,12 @@
         "encryption"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Anatoliy Melnikov",
+            "email": "5785276@gmail.com"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "ext-pdo": "*",
