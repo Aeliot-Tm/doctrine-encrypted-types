@@ -11,10 +11,10 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
+namespace Aeliot\DoctrineEncrypted\Types\Tests\Unit\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionNameProviderInterface as FuncProviderInterface;
-use Aeliot\DoctrineEncryptedTypes\CryptographicSQLFunctionWrapper;
+use Aeliot\DoctrineEncrypted\Types\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

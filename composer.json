@@ -17,12 +17,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Aeliot\\DoctrineEncryptedTypes\\": "src/"
+            "Aeliot\\DoctrineEncrypted\\Types\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Aeliot\\DoctrineEncryptedTypes\\Tests\\": "tests/"
+            "Aeliot\\DoctrineEncrypted\\Types\\Tests\\": "tests/"
         }
     },
     "config": {

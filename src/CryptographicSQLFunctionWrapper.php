@@ -11,10 +11,10 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\DoctrineEncryptedTypes;
+namespace Aeliot\DoctrineEncrypted\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionNameProviderInterface;
-use Aeliot\DoctrineEncryptedTypes\Exception\CryptographicSQLFunctionNameProviderNotConfiguredException;
+use Aeliot\DoctrineEncrypted\Types\Exception\CryptographicSQLFunctionNameProviderNotConfiguredException;
 
 final class CryptographicSQLFunctionWrapper
 {

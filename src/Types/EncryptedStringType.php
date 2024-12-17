@@ -11,10 +11,10 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\DoctrineEncryptedTypes\Types;
+namespace Aeliot\DoctrineEncrypted\Types\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\ColumnDefaultLengthProviderInterface;
-use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
+use Aeliot\DoctrineEncrypted\Types\Enum\TypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 

@@ -11,10 +11,10 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
+namespace Aeliot\DoctrineEncrypted\Types\Tests\Unit\Types;
 
-use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
-use Aeliot\DoctrineEncryptedTypes\Types\EncryptedDateTimeType;
+use Aeliot\DoctrineEncrypted\Types\Enum\TypeEnum;
+use Aeliot\DoctrineEncrypted\Types\Types\EncryptedDateTimeType;
 
 final class EncryptedDateTimeTypeTest extends AbstractTypeTestCase
 {

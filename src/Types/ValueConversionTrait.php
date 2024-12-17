@@ -11,9 +11,9 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\DoctrineEncryptedTypes\Types;
+namespace Aeliot\DoctrineEncrypted\Types\Types;
 
-use Aeliot\DoctrineEncryptedTypes\CryptographicSQLFunctionWrapper;
+use Aeliot\DoctrineEncrypted\Types\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait ValueConversionTrait
