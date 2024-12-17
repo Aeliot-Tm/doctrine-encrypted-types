@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionNameProviderInterface;
+use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionNameProviderInterface as FuncProviderInterface;
 use Aeliot\DoctrineEncryptedTypes\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -26,8 +26,7 @@ abstract class AbstractTypeTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $functionNameProvider = new class(self::FUNC_ENCRYPT, self::FUNC_DECRYPT)
-            implements CryptographicSQLFunctionNameProviderInterface {
+        $functionNameProvider = new class(self::FUNC_ENCRYPT, self::FUNC_DECRYPT) implements FuncProviderInterface {
             public function __construct(
                 private readonly string $encryptFunctionName,
                 private readonly string $decryptFunctionName,
