@@ -41,8 +41,8 @@ RUN set -xe; \
 
 WORKDIR /app
 
-COPY composer.* ./
-COPY composer.6.2.lock ./composer.lock
+COPY composer.json ./composer.json
+COPY composer.3.9.lock ./composer.lock
 
 RUN set -xe; \
     composer install --no-autoloader --no-dev --no-interaction --no-progress --no-scripts --prefer-dist && \
