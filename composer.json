@@ -57,7 +57,9 @@
             "@cs-fixer-check",
             "@phpcs",
             "@phpstan",
-            "@test-unit"
+            "@require-check",
+            "@test-unit",
+            "@unused"
         ],
         "cs-baseline": "@cs-fixer-baseline",
         "cs-check": "@cs-fixer-check",
