@@ -18,9 +18,9 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-trait MockPlatformTrait
+abstract class AbstractTypeTestCase extends TestCase
 {
-    private function mockPlatform(TestCase $test): AbstractPlatform&MockObject
+    protected function mockPlatform(TestCase $test): AbstractPlatform&MockObject
     {
         $platform = $test->createMock(AbstractPlatform::class);
         $platform->method('getBinaryTypeDeclarationSQL')->willReturn('BINARY_TYPE_DECLARATION');

@@ -16,12 +16,9 @@ namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
 use Aeliot\DoctrineEncryptedTypes\Enum\FunctionEnum;
 use Aeliot\DoctrineEncryptedTypes\Types\EncryptedDateType;
-use PHPUnit\Framework\TestCase;
 
-final class EncryptedDateTypeTest extends TestCase
+final class EncryptedDateTypeTest extends AbstractTypeTestCase
 {
-    use MockPlatformTrait;
-
     public function testCanRequireSQLConversion(): void
     {
         $encryptedType = new EncryptedDateType();
