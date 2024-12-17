@@ -12,16 +12,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Aeliot-Tm/doctrine-encrypted-contracts.git",
-                "reference": "e7820f5b5bff7dbbe1674d6358aba7c376215b98"
+                "reference": "aa2bbf0a303900007ae041ad7cd39bfb55786f1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Aeliot-Tm/doctrine-encrypted-contracts/zipball/e7820f5b5bff7dbbe1674d6358aba7c376215b98",
-                "reference": "e7820f5b5bff7dbbe1674d6358aba7c376215b98",
+                "url": "https://api.github.com/repos/Aeliot-Tm/doctrine-encrypted-contracts/zipball/aa2bbf0a303900007ae041ad7cd39bfb55786f1f",
+                "reference": "aa2bbf0a303900007ae041ad7cd39bfb55786f1f",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^8.0"
+                "doctrine/dbal": "^3.0",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "2.0.x-dev",
+                "squizlabs/php_codesniffer": "4.0.x-dev"
             },
             "default-branch": true,
             "type": "library",
@@ -29,6 +34,47 @@
                 "psr-4": {
                     "Aeliot\\DoctrineEncrypted\\Contracts\\": "src/"
                 }
+            },
+            "scripts": {
+                "check-all": [
+                    "@cs-fixer-check",
+                    "@phpcs",
+                    "@require-check",
+                    "@unused"
+                ],
+                "cs-baseline": [
+                    "@cs-fixer-baseline"
+                ],
+                "cs-check": [
+                    "@cs-fixer-check"
+                ],
+                "cs-fix": [
+                    "@cs-fixer-fix"
+                ],
+                "cs-fixer-baseline": [
+                    "XDEBUG_MODE=off tools/pcsf-baseline.phar -b scripts/php-cs-fixer/baseline.json -c scripts/php-cs-fixer/config.php -f scripts/php-cs-fixer/finder.php"
+                ],
+                "cs-fixer-check": [
+                    "@cs-fixer-fix --dry-run"
+                ],
+                "cs-fixer-fix": [
+                    "tools/php-cs-fixer.phar fix -vv --config=scripts/php-cs-fixer/config.php"
+                ],
+                "phive-install": [
+                    "phive install --trust-gpg-keys $(cat .phive/trust-gpg-keys.txt)"
+                ],
+                "phpcs": [
+                    "vendor/bin/phpcs --standard=PSR12 src"
+                ],
+                "phpcbf": [
+                    "vendor/bin/phpcbf --standard=PSR12 src"
+                ],
+                "require-check": [
+                    "tools/composer-require-checker check --config-file=scripts/composer-require-checker/config.json composer.json --output=text"
+                ],
+                "unused": [
+                    "XDEBUG_MODE=off tools/composer-unused.phar unused -c ./scripts/composer-unused/config.php"
+                ]
             },
             "license": [
                 "MIT"
@@ -45,7 +91,7 @@
                 "doctrine",
                 "encryption"
             ],
-            "time": "2024-12-17T07:51:16+00:00"
+            "time": "2024-12-17T11:26:20+00:00"
         },
         {
             "name": "doctrine/cache",
