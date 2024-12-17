@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncrypted\Types\Types;
 
-use Aeliot\DoctrineEncrypted\Types\CryptographicSQLFunctionWrapper;
+use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait ValueConversionTrait

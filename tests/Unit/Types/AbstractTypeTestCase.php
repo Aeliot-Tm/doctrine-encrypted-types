@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Aeliot\DoctrineEncrypted\Types\Tests\Unit\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionNameProviderInterface as FuncProviderInterface;
-use Aeliot\DoctrineEncrypted\Types\CryptographicSQLFunctionWrapper;
+use Aeliot\DoctrineEncrypted\Contracts\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

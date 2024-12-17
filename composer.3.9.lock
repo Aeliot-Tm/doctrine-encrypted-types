@@ -12,17 +12,17 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Aeliot-Tm/doctrine-encrypted-contracts.git",
-                "reference": "aa2bbf0a303900007ae041ad7cd39bfb55786f1f"
+                "reference": "9a85619904288a2b1a2f2a4422b7abd2377f083c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Aeliot-Tm/doctrine-encrypted-contracts/zipball/aa2bbf0a303900007ae041ad7cd39bfb55786f1f",
-                "reference": "aa2bbf0a303900007ae041ad7cd39bfb55786f1f",
+                "url": "https://api.github.com/repos/Aeliot-Tm/doctrine-encrypted-contracts/zipball/9a85619904288a2b1a2f2a4422b7abd2377f083c",
+                "reference": "9a85619904288a2b1a2f2a4422b7abd2377f083c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^3.0",
-                "php": "^7.1|^8.0"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "phpstan/phpstan": "2.0.x-dev",
@@ -95,7 +95,7 @@
                 "source": "https://github.com/Aeliot-Tm/doctrine-encrypted-contracts/tree/main",
                 "issues": "https://github.com/Aeliot-Tm/doctrine-encrypted-contracts/issues"
             },
-            "time": "2024-12-17T11:26:20+00:00"
+            "time": "2024-12-17T14:31:41+00:00"
         },
         {
             "name": "doctrine/cache",
