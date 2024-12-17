@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
 use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
-use Aeliot\DoctrineEncryptedTypes\Enum\FunctionEnum;
 use Aeliot\DoctrineEncryptedTypes\Types\EncryptedStringType;
 
 final class EncryptedStringTypeTest extends AbstractTypeTestCase
@@ -31,7 +30,7 @@ final class EncryptedStringTypeTest extends AbstractTypeTestCase
 
         $encryptedType = new EncryptedStringType();
         self::assertEquals(
-            sprintf('%s(sqlExpr)', FunctionEnum::ENCRYPT),
+            sprintf('%s(sqlExpr)', self::FUNC_ENCRYPT),
             $encryptedType->convertToDatabaseValueSQL('sqlExpr', $platform)
         );
     }
@@ -42,7 +41,7 @@ final class EncryptedStringTypeTest extends AbstractTypeTestCase
 
         $encryptedType = new EncryptedStringType();
         self::assertEquals(
-            sprintf('%s(sqlExpr)', FunctionEnum::DECRYPT),
+            sprintf('%s(sqlExpr)', self::FUNC_DECRYPT),
             $encryptedType->convertToPHPValueSQL('sqlExpr', $platform)
         );
     }
