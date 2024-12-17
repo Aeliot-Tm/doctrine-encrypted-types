@@ -4,8 +4,8 @@
 # Ignore
 .idea
 *.log
-docker-compose.override.yml
 /tools/
 /var/
 /vendor/
+compose.override.yaml
 /composer.lock
