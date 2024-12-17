@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Doctrine Encrypted Field Bundle.
+ * This file is part of the Doctrine Encrypted Types.
  *
  * (c) Anatoliy Melnikov <5785276@gmail.com>
  *
@@ -17,7 +17,6 @@ final class FunctionEnum
 {
     public const DECRYPT = 'APP_DECRYPT';
     public const ENCRYPT = 'APP_ENCRYPT';
-    public const GET_ENCRYPTION_KEY = 'APP_GET_ENCRYPTION_KEY';
 
     private function __construct()
     {

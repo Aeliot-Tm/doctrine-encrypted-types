@@ -8,9 +8,12 @@ ENV COMPOSER_NO_INTERACTION 1
 ENV COMPOSER_VERSION 2.7.6
 ENV DEBIAN_FRONTEND noninteractive
 ENV DOCKER_PHP_DEPS \
+    curl \
+    git \
     gnupg \
     libxml2-dev \
     libzip-dev \
+    openssh-client \
     unzip
 
 RUN set -xe; \
