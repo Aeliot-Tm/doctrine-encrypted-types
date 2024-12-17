@@ -91,6 +91,10 @@
                 "doctrine",
                 "encryption"
             ],
+            "support": {
+                "source": "https://github.com/Aeliot-Tm/doctrine-encrypted-contracts/tree/main",
+                "issues": "https://github.com/Aeliot-Tm/doctrine-encrypted-contracts/issues"
+            },
             "time": "2024-12-17T11:26:20+00:00"
         },
         {
