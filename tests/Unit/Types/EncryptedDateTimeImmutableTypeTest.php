@@ -11,20 +11,20 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Tests\Unit\Doctrine\DBAL\Types;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Tests\Unit\Types;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
-use Aeliot\Bundle\DoctrineEncryptedField\Types\EncryptedDateImmutableType;
+use Aeliot\Bundle\DoctrineEncryptedField\Types\EncryptedDateTimeImmutableType;
 use PHPUnit\Framework\TestCase;
 
-final class EncryptedDateImmutableTypeTest extends TestCase
+final class EncryptedDateTimeImmutableTypeTest extends TestCase
 {
     use MockPlatformTrait;
 
     public function testCanRequireSQLConversion(): void
     {
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
         self::assertTrue($encryptedType->canRequireSQLConversion());
     }
 
@@ -32,7 +32,7 @@ final class EncryptedDateImmutableTypeTest extends TestCase
     {
         $platform = $this->mockPlatform($this);
 
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
         self::assertEquals(
             sprintf('%s(sqlExpr)', FunctionEnum::ENCRYPT),
             $encryptedType->convertToDatabaseValueSQL('sqlExpr', $platform)
@@ -43,7 +43,7 @@ final class EncryptedDateImmutableTypeTest extends TestCase
     {
         $platform = $this->mockPlatform($this);
 
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
         self::assertEquals(
             sprintf('%s(sqlExpr)', FunctionEnum::DECRYPT),
             $encryptedType->convertToPHPValueSQL('sqlExpr', $platform)
@@ -54,22 +54,22 @@ final class EncryptedDateImmutableTypeTest extends TestCase
     {
         $platform = $this->mockPlatform($this);
 
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
         self::assertEquals(255, $encryptedType->getDefaultFieldLength($platform));
     }
 
     public function testGetName(): void
     {
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
 
-        self::assertEquals(FieldTypeEnum::ENCRYPTED_DATE_IMMUTABLE, $encryptedType->getName());
+        self::assertEquals(FieldTypeEnum::ENCRYPTED_DATETIME_IMMUTABLE, $encryptedType->getName());
     }
 
     public function testGetSQLDeclaration(): void
     {
         $platform = $this->mockPlatform($this);
 
-        $encryptedType = new EncryptedDateImmutableType();
+        $encryptedType = new EncryptedDateTimeImmutableType();
         $sqlDeclaration = $encryptedType->getSQLDeclaration([], $platform);
         self::assertEquals('BINARY_TYPE_DECLARATION', $sqlDeclaration);
     }
