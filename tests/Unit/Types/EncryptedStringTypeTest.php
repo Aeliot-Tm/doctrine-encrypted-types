@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
 use Aeliot\DoctrineEncryptedTypes\Types\EncryptedStringType;
 
 final class EncryptedStringTypeTest extends AbstractTypeTestCase
@@ -58,7 +58,7 @@ final class EncryptedStringTypeTest extends AbstractTypeTestCase
     {
         $encryptedType = new EncryptedStringType();
 
-        self::assertEquals(FieldTypeEnum::ENCRYPTED_STRING, $encryptedType->getName());
+        self::assertEquals(TypeEnum::ENCRYPTED_STRING, $encryptedType->getName());
     }
 
     public function testGetSQLDeclaration(): void

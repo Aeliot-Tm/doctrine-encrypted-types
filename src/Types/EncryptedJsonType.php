@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Aeliot\DoctrineEncryptedTypes\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\ColumnDefaultLengthProviderInterface;
-use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\JsonType;
 
@@ -29,7 +29,7 @@ final class EncryptedJsonType extends JsonType implements ColumnDefaultLengthPro
 
     public function getName(): string
     {
-        return FieldTypeEnum::ENCRYPTED_JSON;
+        return TypeEnum::ENCRYPTED_JSON;
     }
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string

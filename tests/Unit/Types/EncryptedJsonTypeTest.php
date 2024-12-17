@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
 use Aeliot\DoctrineEncryptedTypes\Types\EncryptedJsonType;
 
 final class EncryptedJsonTypeTest extends AbstractTypeTestCase
@@ -58,7 +58,7 @@ final class EncryptedJsonTypeTest extends AbstractTypeTestCase
     {
         $encryptedType = new EncryptedJsonType();
 
-        self::assertEquals(FieldTypeEnum::ENCRYPTED_JSON, $encryptedType->getName());
+        self::assertEquals(TypeEnum::ENCRYPTED_JSON, $encryptedType->getName());
     }
 
     public function testGetSQLDeclaration(): void

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Tests\Unit\Types;
 
-use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
 use Aeliot\DoctrineEncryptedTypes\Types\EncryptedDateType;
 
 final class EncryptedDateTypeTest extends AbstractTypeTestCase
@@ -58,7 +58,7 @@ final class EncryptedDateTypeTest extends AbstractTypeTestCase
     {
         $encryptedType = new EncryptedDateType();
 
-        self::assertEquals(FieldTypeEnum::ENCRYPTED_DATE, $encryptedType->getName());
+        self::assertEquals(TypeEnum::ENCRYPTED_DATE, $encryptedType->getName());
     }
 
     public function testGetSQLDeclaration(): void

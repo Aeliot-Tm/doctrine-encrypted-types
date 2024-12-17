@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Aeliot\DoctrineEncryptedTypes\Types;
 
 use Aeliot\DoctrineEncrypted\Contracts\ColumnDefaultLengthProviderInterface;
-use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
+use Aeliot\DoctrineEncryptedTypes\Enum\TypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
@@ -29,7 +29,7 @@ final class EncryptedStringType extends StringType implements ColumnDefaultLengt
 
     public function getName(): string
     {
-        return FieldTypeEnum::ENCRYPTED_STRING;
+        return TypeEnum::ENCRYPTED_STRING;
     }
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
