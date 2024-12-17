@@ -13,13 +13,11 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Types;
 
-use Aeliot\DoctrineEncryptedTypes\EncryptionExpressionTrait;
+use Aeliot\DoctrineEncryptedTypes\CryptographicSQLFunctionWrapper;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait ValueConversionTrait
 {
-    use EncryptionExpressionTrait;
-
     public function canRequireSQLConversion(): bool
     {
         return true;
@@ -30,7 +28,7 @@ trait ValueConversionTrait
      */
     public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform): string
     {
-        return $this->getEncryptSQLExpression($sqlExpr);
+        return CryptographicSQLFunctionWrapper::getEncryptSQLExpression($sqlExpr);
     }
 
     /**
@@ -39,6 +37,6 @@ trait ValueConversionTrait
      */
     public function convertToPHPValueSQL($sqlExpr, $platform): string
     {
-        return $this->getDecryptSQLExpression($sqlExpr);
+        return CryptographicSQLFunctionWrapper::getDecryptSQLExpression($sqlExpr);
     }
 }
