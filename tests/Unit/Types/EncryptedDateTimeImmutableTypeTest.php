@@ -51,7 +51,7 @@ final class EncryptedDateTimeImmutableTypeTest extends AbstractTypeTestCase
         $platform = $this->mockPlatform($this);
 
         $encryptedType = new EncryptedDateTimeImmutableType();
-        self::assertEquals(255, $encryptedType->getDefaultFieldLength($platform));
+        self::assertEquals(255, $encryptedType->getDefaultColumnLength($platform));
     }
 
     public function testGetName(): void

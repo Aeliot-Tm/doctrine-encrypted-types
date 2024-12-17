@@ -13,15 +13,16 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Types;
 
+use Aeliot\DoctrineEncrypted\Contracts\ColumnDefaultLengthProviderInterface;
 use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeType;
 
-final class EncryptedDateTimeType extends DateTimeType implements EncryptedFieldLengthInterface
+final class EncryptedDateTimeType extends DateTimeType implements ColumnDefaultLengthProviderInterface
 {
     use ValueConversionTrait;
 
-    public function getDefaultFieldLength(AbstractPlatform $platform): ?int
+    public function getDefaultColumnLength(AbstractPlatform $platform): ?int
     {
         return 255;
     }

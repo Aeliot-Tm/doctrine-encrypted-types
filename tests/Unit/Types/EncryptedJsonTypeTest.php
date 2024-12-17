@@ -51,7 +51,7 @@ final class EncryptedJsonTypeTest extends AbstractTypeTestCase
         $platform = $this->mockPlatform($this);
 
         $encryptedType = new EncryptedJsonType();
-        self::assertNull($encryptedType->getDefaultFieldLength($platform));
+        self::assertNull($encryptedType->getDefaultColumnLength($platform));
     }
 
     public function testGetName(): void

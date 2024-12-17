@@ -13,15 +13,16 @@ declare(strict_types=1);
 
 namespace Aeliot\DoctrineEncryptedTypes\Types;
 
+use Aeliot\DoctrineEncrypted\Contracts\ColumnDefaultLengthProviderInterface;
 use Aeliot\DoctrineEncryptedTypes\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\JsonType;
 
-final class EncryptedJsonType extends JsonType implements EncryptedFieldLengthInterface
+final class EncryptedJsonType extends JsonType implements ColumnDefaultLengthProviderInterface
 {
     use ValueConversionTrait;
 
-    public function getDefaultFieldLength(AbstractPlatform $platform): ?int
+    public function getDefaultColumnLength(AbstractPlatform $platform): ?int
     {
         return null;
     }
