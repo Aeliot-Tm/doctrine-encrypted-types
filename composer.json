@@ -18,8 +18,7 @@
     "require": {
         "php": "^8.2",
         "aeliot/doctrine-encrypted-contracts": "dev-main",
-        "doctrine/dbal": "^3.9",
-        "squizlabs/php_codesniffer": "^3.11"
+        "doctrine/dbal": "^3.9"
     },
     "config": {
         "allow-plugins": {
@@ -50,7 +49,8 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^11.5"
+        "phpunit/phpunit": "^11.5",
+        "squizlabs/php_codesniffer": "^3.11"
     },
     "scripts": {
         "check-all": [
