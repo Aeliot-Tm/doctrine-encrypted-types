@@ -1,2 +1,31 @@
 parameters:
 	ignoreErrors:
+		-
+			message: '#^Method Aeliot\\DoctrineEncryptedTypes\\Types\\EncryptedDateImmutableType\:\:getDefaultColumnLength\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: ../../src/Types/EncryptedDateImmutableType.php
+
+		-
+			message: '#^Method Aeliot\\DoctrineEncryptedTypes\\Types\\EncryptedDateTimeImmutableType\:\:getDefaultColumnLength\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: ../../src/Types/EncryptedDateTimeImmutableType.php
+
+		-
+			message: '#^Method Aeliot\\DoctrineEncryptedTypes\\Types\\EncryptedDateTimeType\:\:getDefaultColumnLength\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: ../../src/Types/EncryptedDateTimeType.php
+
+		-
+			message: '#^Method Aeliot\\DoctrineEncryptedTypes\\Types\\EncryptedDateType\:\:getDefaultColumnLength\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: ../../src/Types/EncryptedDateType.php
+
+		-
+			message: '#^Method Aeliot\\DoctrineEncryptedTypes\\Types\\EncryptedStringType\:\:getDefaultColumnLength\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: ../../src/Types/EncryptedStringType.php
