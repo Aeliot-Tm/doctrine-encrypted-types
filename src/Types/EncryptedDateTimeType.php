@@ -11,13 +11,13 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Types;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\DateTimeType;
 
-final class EncryptedStringType extends StringType implements EncryptedFieldLengthInterface
+final class EncryptedDateTimeType extends DateTimeType implements EncryptedFieldLengthInterface
 {
     use ValueConversionTrait;
 
@@ -28,7 +28,7 @@ final class EncryptedStringType extends StringType implements EncryptedFieldLeng
 
     public function getName(): string
     {
-        return FieldTypeEnum::ENCRYPTED_STRING;
+        return FieldTypeEnum::ENCRYPTED_DATETIME;
     }
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string

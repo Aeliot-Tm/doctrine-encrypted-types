@@ -11,7 +11,7 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine;
+namespace Aeliot\Bundle\DoctrineEncryptedField;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FunctionEnum;
 

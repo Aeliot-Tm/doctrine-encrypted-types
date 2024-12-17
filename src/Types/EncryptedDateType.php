@@ -11,28 +11,28 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Types;
 
 use Aeliot\Bundle\DoctrineEncryptedField\Enum\FieldTypeEnum;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\JsonType;
+use Doctrine\DBAL\Types\DateType;
 
-final class EncryptedJsonType extends JsonType implements EncryptedFieldLengthInterface
+final class EncryptedDateType extends DateType implements EncryptedFieldLengthInterface
 {
     use ValueConversionTrait;
 
     public function getDefaultFieldLength(AbstractPlatform $platform): ?int
     {
-        return null;
+        return 255;
     }
 
     public function getName(): string
     {
-        return FieldTypeEnum::ENCRYPTED_JSON;
+        return FieldTypeEnum::ENCRYPTED_DATE;
     }
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBlobTypeDeclarationSQL($column);
+        return $platform->getBinaryTypeDeclarationSQL($column);
     }
 }

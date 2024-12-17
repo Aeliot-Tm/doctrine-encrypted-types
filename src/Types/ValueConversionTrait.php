@@ -11,9 +11,9 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace Aeliot\Bundle\DoctrineEncryptedField\Doctrine\DBAL\Types;
+namespace Aeliot\Bundle\DoctrineEncryptedField\Types;
 
-use Aeliot\Bundle\DoctrineEncryptedField\Doctrine\EncryptionExpressionTrait;
+use Aeliot\Bundle\DoctrineEncryptedField\EncryptionExpressionTrait;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 trait ValueConversionTrait
