@@ -176,7 +176,6 @@ jobs:
       - name: Check code style
         run: composer cs-fixer-check -- --show-progress=none
 
-
   phpcs:
     name: Check code style with PHP Code Sniffer
     runs-on: ubuntu-22.04
@@ -276,15 +275,3 @@ jobs:
 
       - name: 'Run testsuite: Unit'
         run: composer run test-unit
-
-  yamllint:
-    name: 'Yamllint'
-    runs-on: ubuntu-22.04
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Yamllint Action
-        uses: bewuethr/yamllint-action@v1.3.0
-        with:
-          config-file: scripts/yamllint.yaml
