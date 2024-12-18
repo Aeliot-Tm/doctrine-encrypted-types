@@ -3,10 +3,11 @@
     "type": "library",
     "description": "Implementation of encrypted column types for Doctrine",
     "keywords": [
-        "doctrine",
+        "cryptographic",
+        "encryption",
         "database",
-        "DBAL",
-        "encryption"
+        "doctrine",
+        "DBAL"
     ],
     "license": "MIT",
     "authors": [
