@@ -3,11 +3,17 @@
     "type": "library",
     "description": "Implementation of encrypted column types for Doctrine",
     "keywords": [
-        "cryptographic",
+        "cryptography",
         "encryption",
-        "database",
+        "decryption",
+        "doctrine-encrypted",
         "doctrine",
-        "DBAL"
+        "doctrine-dbal",
+        "doctrine-column-type",
+        "php",
+        "database",
+        "sql-routine",
+        "sql-function"
     ],
     "license": "MIT",
     "authors": [
@@ -78,5 +84,8 @@
         "require-check": "tools/composer-require-checker check --config-file=scripts/composer-require-checker/config.json composer.json --output=text",
         "test-unit": "vendor/bin/phpunit -c scripts/phpunit/config.xml --testsuite unit",
         "unused": "XDEBUG_MODE=off tools/composer-unused.phar unused -c ./scripts/composer-unused/config.php"
+    },
+    "suggest": {
+        "aeliot/doctrine-encrypted-bundle": "Ensure application of this types in your project"
     }
 }
