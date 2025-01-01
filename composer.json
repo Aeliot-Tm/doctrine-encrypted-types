@@ -8,6 +8,7 @@
         "decryption",
         "doctrine-encrypted",
         "doctrine",
+        "doctrine-extension",
         "doctrine-dbal",
         "doctrine-column-type",
         "php",
